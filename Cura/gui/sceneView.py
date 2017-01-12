@@ -1363,7 +1363,41 @@ class SceneView(openglGui.glGuiPanel):
 			elif machine_type == 'Hephestos':
 				filename = resources.getPathForMesh('hephestos_platform.stl')
 				offset = [0,0,-80]
-
+#Moebyus mod
+			elif machine_type == 'MoebyusOne':
+				filename = resources.getPathForMesh('MoebyusOne_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'M3':
+				filename = resources.getPathForMesh('M3_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'SteelMM':
+				filename = resources.getPathForMesh('SteelMM_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'SteelMM-L':
+				filename = resources.getPathForMesh('SteelMM-L_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'PrusaI3MM':
+				filename = resources.getPathForMesh('PrusaI3MM_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'PrusaI3MM-L':
+				filename = resources.getPathForMesh('PrusaI3MM-L_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'Sirius1':
+				filename = resources.getPathForMesh('Sirius1_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'Sirius11':
+				filename = resources.getPathForMesh('Sirius11_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'Melta':
+				filename = resources.getPathForMesh('Melta_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'MeltaXL':
+				filename = resources.getPathForMesh('MeltaXL_platform.stl')
+				offset = [0,0,0]
+			elif machine_type == 'PrusaGeneric':
+				filename = resources.getPathForMesh('PrusaGeneric_platform.stl')
+				offset = [0,0,0]
+				
 			if filename is not None:
 				meshes = meshLoader.loadMeshes(filename)
 				if len(meshes) > 0:
