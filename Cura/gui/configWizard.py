@@ -16,6 +16,9 @@ from Cura.util import profile
 from Cura.util import gcodeGenerator
 from Cura.util import resources
 
+from Cura.util import moebyusFactory
+from Cura.gui  import moebyusGui
+
 
 class InfoBox(wx.Panel):
 	def __init__(self, parent):
