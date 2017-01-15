@@ -249,7 +249,7 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 
 	profile.putMachineSetting('machine_type'  		, machineType)
 	profile.putProfileSetting('nozzle_size' 		, nozzleSize)
-	profile.putPreference	('simpleModeNozzle' 	, nozzleSize)
+	profile.putPreference	 ('simpleModeNozzle' 	, nozzleSize)
 	
 	profile.putProfileSetting('filament_diameter'	, filamentSize)
 	profile.putProfileSetting('retraction_speed' 	, 60)
