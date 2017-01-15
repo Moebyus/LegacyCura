@@ -1385,12 +1385,18 @@ class SceneView(openglGui.glGuiPanel):
 			elif machine_type == 'PrusaI3MM-L':
 				filename = resources.getPathForMesh('PrusaI3MM-L_platform.stl')
 				offset = [0,0,0]				
-			elif machine_type == 'Sirius1':
+			elif machine_type == 'Sirius1' or machine_type == 'Sirius1-right':
 				filename = resources.getPathForMesh('Sirius1_platform.stl')
 				offset = [0,0,0]
-			elif machine_type == 'Sirius11':
+			elif machine_type == 'Sirius1-duplication':
+				filename = resources.getPathForMesh('Sirius1_platform.stl')
+				offset = [-80,0,0]
+			elif machine_type == 'Sirius11'or machine_type == 'Sirius11-right':
 				filename = resources.getPathForMesh('Sirius11_platform.stl')
 				offset = [0,0,0]
+			elif machine_type == 'Sirius11-duplication':
+				filename = resources.getPathForMesh('Sirius11_platform.stl')
+				offset = [-80,0,0]
 			elif machine_type == 'Melta':
 				filename = resources.getPathForMesh('Melta_platform.stl')
 				offset = [0,0,0]

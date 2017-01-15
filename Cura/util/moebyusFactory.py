@@ -66,11 +66,12 @@ M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
 G28
 G29                     ;Run the auto bed leveling
-G1 Z5.0 F{travel_speed} ;move the platform down 5mm
+G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F200 E20             ;extrude 3mm of feed stock
+G1 F300 E25             ;extrude
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 Y5
+G0 Z0.5 Y20 F1000
+G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
 M117 Materializando...
@@ -190,7 +191,7 @@ M117 Materializando...
 """)		
 
 def setAlterationsSirius() :
-		profile.setAlterationFile('start2.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start2.gcode', """;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -203,22 +204,30 @@ M82                         ;set extruder to absolute mode
 M107                        ;start with the fan off
 G28   
 G29                         ;Run the auto bed leveling
-G1 Z5.0 F{travel_speed}     ;move the platform down 5mm
-T1                          ;Switch to the 2nd extruder
-G92 E0                      ;zero the extruded length
-G1 F200 E20                 ;extrude 10mm of feed stock
-G92 E0                      ;zero the extruded length again
-G1 F200 E-{retraction_dual_amount}
+
+T1
+G1 X300 Y0 Z5.0 F{travel_speed} 
+G92 E0                  ;zero the extruded length
+G1 F200 E20             ;extrude 3mm of feed stock
+G92 E0                  ;zero the extruded length again
+G0 Z0.5 Y10
+G1 F400 E-{retraction_dual_amount}
+G0 Y40
+
 T0                          ;Switch to the first extruder
-G92 E0                      ;zero the extruded length
-G1 F300 E20                 ;extrude 3mm of feed stock
-G92 E0                  	;zero the extruded length again
+G1 X0 Y0 Z5.0 F{travel_speed} 
+G92 E0                  ;zero the extruded length
+G1 F200 E20             ;extrude 3mm of feed stock
+G92 E0                  ;zero the extruded length again
+G0 Z0.5 Y10
+G0 Y40
+
 G1 F{travel_speed}
 ;Put printing message on LCD screen
 M117 Materializando...
 """)
 
-		profile.setAlterationFile('end2.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('end2.gcode', """;Sliced at: {day} {date} {time}
 ;End GCode
 M104 T0 S0                 ;extruder heater off
 M104 T1 S0                 ;extruder heater off
@@ -233,19 +242,105 @@ M117 Terminado!
 ;{profile_string}
 """)
 
+def setAlterationsSiriusRight() :
+	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
+;Print time: {print_time}
+;Filament used: {filament_amount}m {filament_weight}g
+;Filament cost: {filament_cost}
+;M190 S{print_bed_temperature} ;Uncomment to add your own bed temperature line
+;M109 S{print_temperature} ;Uncomment to add your own temperature line
+G21                     ;metric values
+G90                     ;absolute positioning
+M82                     ;set extruder to absolute mode
+M107                    ;start with the fan off
+G28
+G29                     ;Run the auto bed leveling
+T1
+G1 X300 Y0 Z5.0 F{travel_speed} 
+G92 E0                  ;zero the extruded length
+G1 F300 E20             ;extrude 3mm of feed stock
+G92 E0                  ;zero the extruded length again
+G0 Z0.5 Y10
+G0 Y40
+
+G1 F{travel_speed}
+;Put printing message on LCD screen
+M117 Materializando...
+""")
+
+	profile.setAlterationFile('end.gcode', """;Sliced at: {day} {date} {time}
+;End GCode
+M104 S0                    ;extruder heater off
+M140 S0                    ;heated bed heater off (if you have it)
+G91                        ;relative positioning
+G1 E-2.5 F300              ;retract the filament a bit before lifting the nozzle, to release some of the pressure
+G1 Z+2 E-3 F{travel_speed} ;move Z up a bit and retract filament even more
+G28 XY                     ;move X/Y to min endstops, so the head is out of the way
+M84                        ;steppers off
+G90                        ;absolute positioning
+M117 Terminado!
+T0
+;{profile_string}
+""")
+	
+def setAlterationsSiriusDuplicator() :
+	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
+;Print time: {print_time}
+;Filament used: {filament_amount}m {filament_weight}g
+;Filament cost: {filament_cost}
+;M190 S{print_bed_temperature} ;Uncomment to add your own bed temperature line
+;M109 S{print_temperature} ;Uncomment to add your own temperature line
+G21                     ;metric values
+G90                     ;absolute positioning
+M82                     ;set extruder to absolute mode
+M107                    ;start with the fan off
+M605 S2
+G28
+G29                     ;Run the auto bed leveling
+G1 Z5.0 F{travel_speed} ;move the platform down 5mm
+G92 E0                  ;zero the extruded length
+G1 F200 E20             ;extrude 3mm of feed stock
+G92 E0                  ;zero the extruded length again
+G0 Z0.5 Y5
+G1 F{travel_speed}
+;Put printing message on LCD screen
+M117 Materializando...
+""")
+
+	profile.setAlterationFile('end.gcode', """;Sliced at: {day} {date} {time}
+;End GCode
+M104 S0                    ;extruder heater off
+M140 S0                    ;heated bed heater off (if you have it)
+G91                        ;relative positioning
+G1 E-2.5 F300              ;retract the filament a bit before lifting the nozzle, to release some of the pressure
+G1 Z+2 E-3 F{travel_speed} ;move Z up a bit and retract filament even more
+G28 XY                     ;move X/Y to min endstops, so the head is out of the way
+M605 S1
+M84                        ;steppers off
+G90                        ;absolute positioning
+M117 Terminado!
+;{profile_string}
+""")
+
 def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
 	_printer_info = [
-		("Moebyus One"			, 150, 150, 150, "MoebyusOne"),
-		("Prusa i3 MM"			, 200, 200, 190, "PrusaI3MM" ),
-		("Prusa i3 MM Large"	, 200, 300, 190, "PrusaI3MM-L"),
-		("Steel MM"				, 200, 200, 200, "SteelMM"),
-		("Steel MM Large"		, 310, 200, 260, "SteelMM-L"),
-		("Steel MM Marco Sirius", 310, 200, 260, "SteelMM-Sirius"),
-		("Melta Kossel"			, 160, 160, 300, "Melta"),
-		("Melta XL"				, 400, 400, 600, "MeltaXL"),
-		("[SIRIUS] 1.0"			, 300, 200, 200, "Sirius1"),
-		("[SIRIUS] 1.1"			, 310, 200, 260, "Sirius11"),
-		("Moebyus M3"			, 1000,1000,1000, "M3") ]
+		("Moebyus One"				, 150, 150, 150, "MoebyusOne"),
+		("Prusa i3 MM"				, 200, 200, 190, "PrusaI3MM" ),
+		("Prusa i3 MM Large"		, 200, 300, 190, "PrusaI3MM-L"),
+		("Steel MM"					, 200, 200, 200, "SteelMM"),
+		("Steel MM Large"			, 310, 200, 260, "SteelMM-L"),
+		("Steel MM Marco Sirius"	, 310, 200, 260, "SteelMM-Sirius"),
+		("Melta Kossel"				, 160, 160, 300, "Melta"),
+		("Melta XL"					, 400, 400, 600, "MeltaXL"),
+		("[SIRIUS] Normal & Dual"	, 300, 200, 200, "Sirius1"),
+		("[SIRIUS] Right Extruder"	, 300, 200, 200, "Sirius1-right"),		
+		("[SIRIUS] Duplicator"		, 150, 200, 200, "Sirius1-duplication"),
+		("[SIRIUS] Normal & Dual"	, 310, 200, 260, "Sirius11"),
+		("[SIRIUS] Right Extruder"	, 310, 200, 260, "Sirius11-right"),
+		("[SIRIUS] Duplicator"		, 150, 200, 260, "Sirius11-duplication"),
+		("Moebyus M3"				, 1000,1000,1000, "M3") ]
 
 	profile.putMachineSetting('machine_type'  		, machineType)
 	profile.putProfileSetting('nozzle_size' 		, nozzleSize)
@@ -292,24 +387,52 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		profile.putMachineSetting('machine_shape', 'Square')		
 		setAlterationsM3()
 	elif machineType == 'MoebyusOne':
-		profile.putMachineSetting('has_heated_bed'			, 'False')
-		profile.putMachineSetting('machine_center_is_zero'	, 'False')
-		profile.putMachineSetting('machine_shape'			, 'Square')
-		profile.putProfileSetting('platform_adhesion'		, 'Raft')
+		profile.putMachineSetting('has_heated_bed'				, 'False')
+		profile.putMachineSetting('machine_center_is_zero'		, 'False')
+		profile.putMachineSetting('machine_shape'				, 'Square')
+		profile.putProfileSetting('platform_adhesion'			, 'Raft')
+		profile.putPreference	 ('simpleModePlatformAdhesion'	, '2')
 
 		profile.putProfileSetting('fan_full_height'			, '0.5')
 		profile.putProfileSetting('fan_speed' 				, '60')
 		profile.putProfileSetting('fan_speed_max' 			, '90')
 		profile.putProfileSetting('cool_min_feedrate' 		, '10')
+		profile.putPreference	 ('startMode'				, 'Simple')
+		
 		setAlterationsOne()
 	elif machineType == 'Sirius1' or machineType == 'Sirius11':
 		profile.putMachineSetting('extruder_amount', '2')
+		setAlterationsSirius()
+	elif machineType == 'Sirius1-right' or machineType == 'Sirius11-right':
+		profile.putMachineSetting('extruder_amount', '1')
+		setAlterationsSirius()
+	elif machineType == 'Sirius1-duplication' or machineType == 'Sirius11-duplication':
+		profile.putMachineSetting('extruder_amount', '1')
 		setAlterationsSirius()
 
 def genProfileForMachine (machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
 	print("Gen Profile for:")
 	print(machineType)
 
+	if machineType == 'Sirius1' :
+		setCommonSettings()
+		setMachineProperties('Sirius1-duplication',filamentSize,nozzleSize)
+		profile.checkAndUpdateMachineName()
+		profile.setActiveMachine(profile.getMachineCount())
+		setCommonSettings()
+		setMachineProperties('Sirius1-right',filamentSize,nozzleSize)
+		profile.checkAndUpdateMachineName()
+		profile.setActiveMachine(profile.getMachineCount())
+	elif machineType == 'Sirius11':
+		setCommonSettings()
+		setMachineProperties('Sirius11-duplication',filamentSize,nozzleSize)
+		profile.checkAndUpdateMachineName()
+		profile.setActiveMachine(profile.getMachineCount())
+		setCommonSettings()
+		setMachineProperties('Sirius11-right',filamentSize,nozzleSize)
+		profile.checkAndUpdateMachineName()
+		profile.setActiveMachine(profile.getMachineCount())
+		
 	setCommonSettings()
 	setMachineProperties(machineType,filamentSize,nozzleSize)
 
