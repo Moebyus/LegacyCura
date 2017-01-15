@@ -622,11 +622,14 @@ if [ $BUILD_TARGET = "win32" ]; then
 	  git@github.com:GreatFruitOmsk/Power \
 	  Power
     if [ $? != 0 ]; then echo "Failed to clone Power"; exit 1; fi
-	gitClone \
-	  ${CURA_ENGINE_REPO} \
-	  ${CURA_ENGINE_REPO_PUSHURL} \
-	  CuraEngine
-    if [ $? != 0 ]; then echo "Failed to clone CuraEngine"; exit 1; fi
+
+#moebyus mod
+#	gitClone \
+#	  ${CURA_ENGINE_REPO} \
+#	  ${CURA_ENGINE_REPO_PUSHURL} \
+#	  CuraEngine
+#   if [ $? != 0 ]; then echo "Failed to clone CuraEngine"; exit 1; fi
+
 fi
 
 #############################
@@ -690,9 +693,10 @@ if [ $BUILD_TARGET = "win32" ]; then
 	#Remove the gle files because they require MSVCR71.dll, which is not included. We also don't need gle, so it's safe to remove it.
 	rm -rf ${TARGET_DIR}/python/Lib/OpenGL/DLLS/gle*
 
+	#moebyus mod dont build the engine
     #Build the C++ engine
-	$MAKE -C CuraEngine VERSION=${BUILD_NAME} OS=Windows_NT CXX=${CXX}
-    if [ $? != 0 ]; then echo "Failed to build CuraEngine"; exit 1; fi
+	#$MAKE -C CuraEngine VERSION=${BUILD_NAME} OS=Windows_NT CXX=${CXX}
+    #if [ $? != 0 ]; then echo "Failed to build CuraEngine"; exit 1; fi
 fi
 
 #add Cura
@@ -706,10 +710,10 @@ echo $BUILD_NAME > ${TARGET_DIR}/Cura/version
 #add script files
 if [ $BUILD_TARGET = "win32" ]; then
     cp -a scripts/${BUILD_TARGET}/*.bat $TARGET_DIR/
-    cp CuraEngine/build/CuraEngine.exe $TARGET_DIR
-	cp /usr/lib/gcc/i686-w64-mingw32/4.8/libgcc_s_sjlj-1.dll $TARGET_DIR
-    cp /usr/i686-w64-mingw32/lib/libwinpthread-1.dll $TARGET_DIR
-    cp /usr/lib/gcc/i686-w64-mingw32/4.8/libstdc++-6.dll $TARGET_DIR
+    cp orig/CuraEngine.exe $TARGET_DIR
+	cp orig/libgcc_s_sjlj-1.dll $TARGET_DIR
+    cp orig/libwinpthread-1.dll $TARGET_DIR
+    cp orig/libstdc++-6.dll $TARGET_DIR
 fi
 
 #package the result
