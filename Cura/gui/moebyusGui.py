@@ -8,6 +8,8 @@ import wx.wizard
 from Cura.gui  import firmwareInstall
 from Cura.util import machineCom
 from Cura.util import profile
+from Cura.util import resources
+
 
 from Cura.util import moebyusFactory
 
@@ -178,16 +180,16 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 		self.AddSeperator()
 
 		filaments = ['1.75','3']
-		combo = wx.ComboBox(self, -1, filaments[0], choices=filaments, style=wx.CB_DROPDOWN|wx.CB_READONLY)
+		self.comboFilaments = wx.ComboBox(self, -1, filaments[0], choices=filaments, style=wx.CB_DROPDOWN|wx.CB_READONLY)
 		text = wx.StaticText(self, -1, "Filament size")
 		self.GetSizer().Add(text,  pos=(self.rowNr, 0), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
-		self.GetSizer().Add(combo, pos=(self.rowNr, 1), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
+		self.GetSizer().Add(self.comboFilaments, pos=(self.rowNr, 1), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
 
 		nozzles = ['0.2','0.3','0.35','0.4','0.5','0.6','0.8','1.0']
-		combo = wx.ComboBox(self, -1, nozzles[3], choices=nozzles, style=wx.CB_DROPDOWN|wx.CB_READONLY)
+		self.comboNozzles = wx.ComboBox(self, -1, nozzles[3], choices=nozzles, style=wx.CB_DROPDOWN|wx.CB_READONLY)
 		text = wx.StaticText(self, -1, "Nozzle size")
 		self.GetSizer().Add(text,  pos=(self.rowNr, 2), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
-		self.GetSizer().Add(combo, pos=(self.rowNr, 3), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
+		self.GetSizer().Add(self.comboNozzles, pos=(self.rowNr, 3), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
 		self.rowNr += 1
 
 		self.AddSeperator()
@@ -211,7 +213,14 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 
 #Configuracion del perfil
 	def StoreData(self):
-		print("Saving....")
+		mType = "PrusaI3MM"
+		for selected in self._printers:
+			if selected.GetValue():
+				print(selected.GetLabel())
+				values = selected.data
+				mType = values[0];
+		moebyusFactory.genProfileForMachine(mType, self.comboFilaments.GetValue(),self.comboNozzles.GetValue())
+		profile.checkAndUpdateMachineName()
 
 	def OnMachineSelect(self, e):
 		for selected in self._printers:

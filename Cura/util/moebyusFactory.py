@@ -3,11 +3,11 @@ __copyright__ = "Released under terms of the AGPLv3 License"
 import wx
 from Cura.util import profile
 
-
 def setCuraSettings() :
 	profile.putPreference('startMode'						, 'Normal')
 	profile.putPreference('filament_cost_kg'				, '18')
 	profile.putPreference('filament_physical_density'		, '1050')
+	profile.putPreference('printing_window'					, 'Pronterface UI')
 
 def setCommonSettings() :
 #Default machine settings
@@ -22,6 +22,8 @@ def setCommonSettings() :
 	profile.putMachineSetting('has_heated_bed'				, 'True')
 	profile.putMachineSetting('machine_center_is_zero'		, 'False')
 	profile.putMachineSetting('machine_shape'				, 'Square')	
+	profile.putMachineSetting('serial_baud_auto'			, '115200')	
+	
 
 #Default print settings
 	profile.putProfileSetting('retraction_hop'    			, '0.1')
@@ -49,47 +51,7 @@ def setCommonSettings() :
 	profile.putProfileSetting('raft_airgap' 			, '0.25')
 	profile.putProfileSetting('raft_surface_layers' 	, '2')
 	profile.putProfileSetting('raft_surface_thickness' 	, '0.2')
-
-def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
-	self._printer_info = [
-		("Moebyus One"			, 150, 150, 150, "MoebyusOne"),
-		("Prusa i3 MM"			, 200, 200, 190, "PrusaI3MM" ),
-		("Prusa i3 MM Large"	, 200, 300, 190, "PrusaI3MM-L"),
-		("Steel MM"				, 200, 200, 200, "SteelMM"),
-		("Steel MM Large"		, 310, 200, 260, "SteelMM-L"),
-		("Melta Kossel"			, 160, 160, 300, "Melta"),
-		("Melta XL"				, 400, 400, 600, "MeltaXL"),
-		("[SIRIUS] 1.0"			, 300, 200, 200, "Sirius1"),
-		("[SIRIUS] 1.1"			, 310, 200, 260, "Sirius11"),
-		("Moebyus M3)"			, 1000,1000,1000, "M3") ]
-
-	profile.putMachineSetting('machine_type'  		, machineType)
-	profile.putProfileSetting('nozzle_size' 		, nozzleSize)
-
-	profile.putProfileSetting('filament_diameter'	, filamentSize)
-	profile.putProfileSetting('retraction_speed' 	, 60)
-	profile.putProfileSetting('retraction_amount'	, 3.5)
-
-
-	profile.putMachineSetting('machine_width' , 199)
-	profile.putMachineSetting('machine_depth' , 199)
-	profile.putMachineSetting('machine_height', 199)
-	
-	for machineInfo in self._printer_info :
-		if machineInfo[4] == machineType:
-			profile.putMachineSetting('machine_name'  , values[0])
-			profile.putMachineSetting('machine_width' , values[1])
-			profile.putMachineSetting('machine_depth' , values[2])
-			profile.putMachineSetting('machine_height', values[3])
-
-	profile.putProfileSetting('layer_height'			, float(nozzleSize / 2))
-	profile.putProfileSetting('bottom_thickness'		, float(nozzleSize / 2))
-	profile.putProfileSetting('wall_thickness'			, float(nozzleSize * 2))
-	profile.putProfileSetting('solid_layer_thickness'	, float(profile.getProfileSettingFloat('layer_height')) * 4)
-	profile.putProfileSetting('raft_base_linewidth' 	, float(nozzleSize * 2   ))
-	profile.putProfileSetting('raft_interface_linewidth', float(nozzleSize * 1.25))
-	profile.putProfileSetting('raft_surface_linewidth' 	, float(nozzleSize * 1.1 ))
-
+						
 def setAlterations() :
 	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
@@ -128,11 +90,8 @@ M117 Terminado!
 ;{profile_string}
 """)
 
-	if self.machineType == 'Melta':
-		profile.putMachineSetting('has_heated_bed', 'False')
-		profile.putMachineSetting('machine_center_is_zero', 'True')	
-		profile.putMachineSetting('machine_shape', 'Circular')
-		profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+def setAlterationsMelta() :
+	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -156,11 +115,8 @@ G1 F{travel_speed}
 M117 Materializando...
 """)		
 
-	elif self.machineType == 'MeltaXL':
-		profile.putMachineSetting('has_heated_bed', 'True')
-		profile.putMachineSetting('machine_center_is_zero', 'True')	
-		profile.putMachineSetting('machine_shape', 'Circular')
-		profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+def setAlterationsMeltaXXL() :
+	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -184,11 +140,8 @@ G1 F{travel_speed}
 M117 Materializando...
 """)
 
-	elif self.machineType == 'M3':
-		profile.putMachineSetting('has_heated_bed', 'False')
-		profile.putMachineSetting('machine_center_is_zero', 'False')	
-		profile.putMachineSetting('machine_shape', 'Square')
-		profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+def setAlterationsM3() :
+	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -211,17 +164,8 @@ G1 F{travel_speed}
 M117 Materializando...
 """)
 
-	elif self.machineType == 'MoebyusOne':
-		profile.putMachineSetting('has_heated_bed'			, 'False')
-		profile.putMachineSetting('machine_center_is_zero'	, 'False')
-		profile.putMachineSetting('machine_shape'			, 'Square')
-		profile.putProfileSetting('platform_adhesion'		, 'Raft')
-
-		profile.putProfileSetting('fan_full_height'			, '0.5')
-		profile.putProfileSetting('fan_speed' 				, '60')
-		profile.putProfileSetting('fan_speed_max' 			, '90')
-		profile.putProfileSetting('cool_min_feedrate' 		, '10')
-		profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+def setAlterationsOne() :
+	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -245,8 +189,7 @@ G1 F{travel_speed}
 M117 Materializando...
 """)		
 
-	elif self.machineType == 'Sirius1' or self.machineType == 'Sirius11':
-		profile.putMachineSetting('extruder_amount', '2')
+def setAlterationsSirius() :
 		profile.setAlterationFile('start2.gcode', """;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
@@ -289,3 +232,85 @@ G90                        ;absolute positioning
 M117 Terminado!
 ;{profile_string}
 """)
+
+def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
+	_printer_info = [
+		("Moebyus One"			, 150, 150, 150, "MoebyusOne"),
+		("Prusa i3 MM"			, 200, 200, 190, "PrusaI3MM" ),
+		("Prusa i3 MM Large"	, 200, 300, 190, "PrusaI3MM-L"),
+		("Steel MM"				, 200, 200, 200, "SteelMM"),
+		("Steel MM Large"		, 310, 200, 260, "SteelMM-L"),
+		("Steel MM Marco Sirius", 310, 200, 260, "SteelMM-Sirius"),
+		("Melta Kossel"			, 160, 160, 300, "Melta"),
+		("Melta XL"				, 400, 400, 600, "MeltaXL"),
+		("[SIRIUS] 1.0"			, 300, 200, 200, "Sirius1"),
+		("[SIRIUS] 1.1"			, 310, 200, 260, "Sirius11"),
+		("Moebyus M3"			, 1000,1000,1000, "M3") ]
+
+	profile.putMachineSetting('machine_type'  		, machineType)
+	profile.putProfileSetting('nozzle_size' 		, nozzleSize)
+	profile.putPreference	('simpleModeNozzle' 	, nozzleSize)
+	
+	profile.putProfileSetting('filament_diameter'	, filamentSize)
+	profile.putProfileSetting('retraction_speed' 	, 60)
+	profile.putProfileSetting('retraction_amount'	, 3.5)
+
+
+	profile.putMachineSetting('machine_width' , 199)
+	profile.putMachineSetting('machine_depth' , 199)
+	profile.putMachineSetting('machine_height', 199)
+	
+	for machineInfo in _printer_info :
+		if machineInfo[4] == machineType:
+			profile.putMachineSetting('machine_name'  , machineInfo[0])
+			profile.putMachineSetting('machine_width' , machineInfo[1])
+			profile.putMachineSetting('machine_depth' , machineInfo[2])
+			profile.putMachineSetting('machine_height', machineInfo[3])
+
+	profile.putProfileSetting('layer_height'			, float(nozzleSize) / 2)
+	profile.putProfileSetting('bottom_thickness'		, float(nozzleSize) / 2)
+	profile.putProfileSetting('wall_thickness'			, float(nozzleSize) * 2)
+	profile.putProfileSetting('solid_layer_thickness'	, float(profile.getProfileSettingFloat('layer_height')) * 4)
+	profile.putProfileSetting('raft_base_linewidth' 	, float(nozzleSize) * 2 )
+	profile.putProfileSetting('raft_interface_linewidth', float(nozzleSize) * 1.25)
+	profile.putProfileSetting('raft_surface_linewidth' 	, float(nozzleSize) * 1.1 )
+		
+	setAlterations()
+	if machineType == 'Melta':
+		profile.putMachineSetting('has_heated_bed', 'False')
+		profile.putMachineSetting('machine_center_is_zero', 'True')	
+		profile.putMachineSetting('machine_shape', 'Circular')
+		setAlterationsMelta()
+	elif machineType == 'MeltaXL':
+		profile.putMachineSetting('has_heated_bed', 'True')
+		profile.putMachineSetting('machine_center_is_zero', 'True')	
+		profile.putMachineSetting('machine_shape', 'Circular')
+		setAlterationsMeltaXXL()
+	elif machineType == 'M3':
+		profile.putMachineSetting('has_heated_bed', 'False')
+		profile.putMachineSetting('machine_center_is_zero', 'False')	
+		profile.putMachineSetting('machine_shape', 'Square')		
+		setAlterationsM3()
+	elif machineType == 'MoebyusOne':
+		profile.putMachineSetting('has_heated_bed'			, 'False')
+		profile.putMachineSetting('machine_center_is_zero'	, 'False')
+		profile.putMachineSetting('machine_shape'			, 'Square')
+		profile.putProfileSetting('platform_adhesion'		, 'Raft')
+
+		profile.putProfileSetting('fan_full_height'			, '0.5')
+		profile.putProfileSetting('fan_speed' 				, '60')
+		profile.putProfileSetting('fan_speed_max' 			, '90')
+		profile.putProfileSetting('cool_min_feedrate' 		, '10')
+		setAlterationsOne()
+	elif machineType == 'Sirius1' or machineType == 'Sirius11':
+		profile.putMachineSetting('extruder_amount', '2')
+		setAlterationsSirius()
+
+def genProfileForMachine (machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
+	print("Gen Profile for:")
+	print(machineType)
+
+	setCommonSettings()
+	setMachineProperties(machineType,filamentSize,nozzleSize)
+
+	

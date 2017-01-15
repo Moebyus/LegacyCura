@@ -1376,12 +1376,15 @@ class SceneView(openglGui.glGuiPanel):
 			elif machine_type == 'SteelMM-L':
 				filename = resources.getPathForMesh('SteelMM-L_platform.stl')
 				offset = [0,0,0]
+			elif machine_type == 'SteelMM-Sirius':
+				filename = resources.getPathForMesh('SteelMM-LS_platform.stl')
+				offset = [0,0,0]				
 			elif machine_type == 'PrusaI3MM':
 				filename = resources.getPathForMesh('PrusaI3MM_platform.stl')
 				offset = [0,0,0]
 			elif machine_type == 'PrusaI3MM-L':
 				filename = resources.getPathForMesh('PrusaI3MM-L_platform.stl')
-				offset = [0,0,0]
+				offset = [0,0,0]				
 			elif machine_type == 'Sirius1':
 				filename = resources.getPathForMesh('Sirius1_platform.stl')
 				offset = [0,0,0]
