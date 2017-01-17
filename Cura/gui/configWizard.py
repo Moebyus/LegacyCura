@@ -419,7 +419,7 @@ class MachineSelectPage(InfoPage):
 	def __init__(self, parent):
 		super(MachineSelectPage, self).__init__(parent, _("Select your machine brand and model"))
 #Moebyus 
-		bitmap = wx.StaticBitmap(self, -1, wx.Bitmap(resources.getPathForImage('Moebyus_icon.png')))
+		bitmap = wx.StaticBitmap(self, -1, wx.Bitmap(resources.getPathForImage('Moebyus_logo.png')))
 		self.GetSizer().Add(bitmap, pos=(self.rowNr, 0), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
 		self.rowNr += 1		
 		self.MoebyusRadio = wx.RadioButton(self, -1, "Select Moebyus model", style=0)
