@@ -150,7 +150,7 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 			("Prusa i3 MM Large\t\t(200x300x200)"		, "PrusaI3MM-L"		, "prusai3mml.png" ),
 			("Steel MM\t\t\t\t\t(200x200x200)"			, "SteelMM"			, "steelmm.png" ),
 			("Steel MM Large\t\t\t(300x200x200)"		, "SteelMM-L"  		, "steelmml.png" ),
-			("Steel MM Marco Sirius\t(300x200x200)"		, "SteelMM-Sirius"	, "steelmml.png" ),
+			("Steel MM Marco Sirius\t(300x200x200)"		, "SteelMM-Sirius"	, "steelsirius.png" ),
 			("Melta Kossel\t\t\t\t(160x300)"			, "Melta"			, "melta.png" ),
 			("Melta XL\t\t\t\t\t(400x600)"				, "MeltaXL"			, "meltaxl.png" ),
 			("[SIRIUS] 1.0\t\t\t\t(300x200x200)"		, "Sirius1"			, "sirius1.png" ),
