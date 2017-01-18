@@ -981,7 +981,7 @@ class SceneView(openglGui.glGuiPanel):
 		glDisable(GL_BLEND)
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
-		glClearColor(0.8, 0.8, 0.8, 1.0)
+		glClearColor(0.6, 0.6, 0.6, 1.0)
 		glClearStencil(0)
 		glClearDepth(1.0)
 
@@ -1485,11 +1485,11 @@ class SceneView(openglGui.glGuiPanel):
 		for n in xrange(0, len(polys[0])):
 			if not circular:
 				if n % 2 == 0:
-					glColor4ub(5, 171, 231, 96)
+					glColor4ub(110, 134, 158, 128)
 				else:
-					glColor4ub(5, 171, 231, 64)
+					glColor4ub(110, 134, 158, 96)
 			else:
-				glColor4ub(5, 171, 231, 96)
+				glColor4ub(110, 134, 158, 128)
 
 			glVertex3f(polys[0][n][0], polys[0][n][1], height)
 			glVertex3f(polys[0][n][0], polys[0][n][1], 0)
@@ -1498,7 +1498,7 @@ class SceneView(openglGui.glGuiPanel):
 		glEnd()
 
 		#Draw top of build volume.
-		glColor4ub(5, 171, 231, 128)
+		glColor4ub(110, 134, 158, 128)
 		glBegin(GL_TRIANGLE_FAN)
 		for p in polys[0][::-1]:
 			glVertex3f(p[0], p[1], height)

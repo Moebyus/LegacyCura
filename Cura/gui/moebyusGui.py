@@ -140,8 +140,39 @@ class MoebyusFactory(wx.Dialog) :
 		print("Gen profile")
 
 
+class moebyusFirmwarePage(MoebyusInfoPage) :
+	def __init__(self, parent) :
+		super(moebyusFirmwarePage, self).__init__(parent, _("Moebyus Firmware"))
+		self.options = []
+		self.machines = [
+						("Prusa I3\t\t\t(200x200x200)"			,"PrusaI3MM"),
+						("Prusa MM - L\t\t(200x300x200)"		,"PrusaI3MM-L"),
+						("Steel MM\t\t\t(200x200x200)"			,"SteelMM"),
+						("Steel MM - L\t\t(300x200x200)"		,"SteelMM-L"),
+						("Steel MM Marco Sirius\t(300x200x200)"	,"SteelMM-Sirius"),
+						("Melta Kossel\t\t(160x300)"			,"Melta"),
+						("[SIRIUS] 1.0\t\t(200x200x200)"		,"Sirius1"),
+						("[SIRIUS] 1.1\t\t(200x200x200)"		,"Sirius11")]
+		i = 0;
+		for machine in self.machines:
+			if i == 0:
+				item = self.AddRadioButton(machine[0], style=wx.RB_GROUP)
+				i+=1;
+				item.data = machine[1:]
+				self.options.append(item)
+				item.Bind(wx.EVT_RADIOBUTTON, self.OnMachineSelect)
+			else:
+				item = self.AddRadioButton(machine[0])
+				item.data = machine[1:]
+				self.options.append(item)
+				item.Bind(wx.EVT_RADIOBUTTON, self.OnMachineSelect)
+
+	def OnMachineSelect(self, e):
+		print("selected")
+		
+		
 class MoebyusSelectModelPage(MoebyusInfoPage):
-	def __init__(self, parent):
+	def __init__(self, parent) :
 		super(MoebyusSelectModelPage, self).__init__(parent, _("Moebyus Machines"))
 		self._printer_info = [
 			# max Size x, y, z,machine type
@@ -150,12 +181,13 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 			("Prusa i3 MM Large\t\t(200x300x200)"		, "PrusaI3MM-L"		, "prusai3mml.png" ),
 			("Steel MM\t\t\t\t\t(200x200x200)"			, "SteelMM"			, "steelmm.png" ),
 			("Steel MM Large\t\t\t(300x200x200)"		, "SteelMM-L"  		, "steelmml.png" ),
-			("Steel MM Marco Sirius\t(300x200x200)"		, "SteelMM-Sirius"	, "steelmml.png" ),
+			("Steel MM Marco Sirius\t(300x200x200)"		, "SteelMM-Sirius"	, "steelsirius.png" ),
 			("Melta Kossel\t\t\t\t(160x300)"			, "Melta"			, "melta.png" ),
 			("Melta XL\t\t\t\t\t(400x600)"				, "MeltaXL"			, "meltaxl.png" ),
 			("[SIRIUS] 1.0\t\t\t\t(300x200x200)"		, "Sirius1"			, "sirius1.png" ),
 			("[SIRIUS] 1.1\t\t\t\t(300x200x250)"		, "Sirius11"		, "sirius11.png" ),
 			("Moebyus M3\t\t\t\t(1000x1000x1000)"		, "M3"				, "m3.png") ]
+		self.parent = parent
 #Seleccion de maquina
 		self.AddText(_("Select Model:"))
 		self._printers = []
@@ -196,17 +228,19 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 		text = wx.StaticText(self, -1, 'Options')
 		self.GetSizer().Add(text, pos=(self.rowNr, 0), span=(1, 1), flag=wx.ALL)		
 		self.rowNr += 1
-		check = wx.CheckBox(self, -1)
+		self.checkFirmware = wx.CheckBox(self, -1)
 		text = wx.StaticText(self, -1, 'Load Firmware')
-		check.SetValue(0)
+		self.checkFirmware.SetValue(0)
+		self.checkFirmware.Disable()
 		self.GetSizer().Add(text,  pos=(self.rowNr, 0), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
-		self.GetSizer().Add(check, pos=(self.rowNr, 1), span=(1, 1), flag=wx.ALL)
+		self.GetSizer().Add(self.checkFirmware, pos=(self.rowNr, 1), span=(1, 1), flag=wx.ALL)
 
-		check = wx.CheckBox(self, -1)
+		self.checkLevel = wx.CheckBox(self, -1)
 		text = wx.StaticText(self, -1, 'Level Bed')
-		check.SetValue(0)
+		self.checkLevel.SetValue(0)
+		self.checkLevel.Disable()
 		self.GetSizer().Add(text,  pos=(self.rowNr, 2), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
-		self.GetSizer().Add(check, pos=(self.rowNr, 3), span=(1, 1), flag=wx.ALL)
+		self.GetSizer().Add(self.checkLevel, pos=(self.rowNr, 3), span=(1, 1), flag=wx.ALL)
 
 		self.rowNr += 1
 
@@ -228,6 +262,36 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 				print(selected.GetLabel())
 				values = selected.data
 				self.previewBitmap.SetBitmap(wx.Bitmap(resources.getPathForImage(values[1])))
+				if values[0] == 'MoebyusOne' :
+					self.comboNozzles.Disable()
+					self.comboFilaments.Disable()
+					self.checkFirmware.Disable()
+					self.comboNozzles.SetSelection(3)
+					self.comboFilaments.SetSelection(0)
+				elif values[0] == 'M3' :
+					self.comboNozzles.Enable()
+					self.comboFilaments.Disable()
+					self.checkFirmware.Disable()
+					self.comboNozzles.SetSelection(6)
+					self.comboFilaments.SetSelection(0)
+				elif values[0] == 'MeltaXL' :
+					self.comboNozzles.Enable()
+					self.comboFilaments.Disable()
+					self.checkFirmware.Disable()
+					self.comboNozzles.SetSelection(6)
+					self.comboFilaments.SetSelection(0)
+				elif values[0] == 'Sirius1' or  values[0] == 'Sirius11' or values[0] == 'SteelMM-Sirius' or values[0] == 'Melta' :
+					self.comboNozzles.Enable()
+					self.comboFilaments.Enable()
+					self.checkFirmware.Enable()
+					self.comboNozzles.SetSelection(3)
+					self.comboFilaments.SetSelection(0)
+				else :
+					self.comboNozzles.Enable()
+					self.comboFilaments.Enable()
+					self.checkFirmware.Enable()
+					self.comboNozzles.SetSelection(3)
+					self.comboFilaments.SetSelection(1)					
 
 
 class MoebyusDonePage(MoebyusInfoPage):
