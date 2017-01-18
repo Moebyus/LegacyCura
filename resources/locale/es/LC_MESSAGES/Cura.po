@@ -2037,14 +2037,14 @@ msgstr ""
 
 #: Cura/util/profile.py:205
 msgid "Dual extrusion switch amount (mm)"
-msgstr "Extrusión dual cantidad de cambio (mm)"
+msgstr "Retracción al cambiar material (mm)"
 
 #: Cura/util/profile.py:205
 msgid ""
 "Amount of retraction when switching nozzle with dual-extrusion, set at 0 for "
 "no retraction at all. A value of 16.0mm seems to generate good results."
 msgstr ""
-"Cantidd de retracción al cambiar de nozzle con extrusión dual, fijar a 0 "
+"Cantidad de retracción al cambiar de nozzle con extrusión dual, fijar a 0 "
 "para no retraer. Un valor de 16 mm parece ofrecer buenos resultados."
 
 #: Cura/util/profile.py:206
@@ -3040,7 +3040,7 @@ msgstr ""
 
 #: Cura/util/profile.py:554
 msgid "Head size towards X min (mm)"
-msgstr "Tamañano del cabezal hacia X min (mm)"
+msgstr "Tamaño del cabezal hacia X min (mm)"
 
 #: Cura/util/profile.py:554
 msgid ""
@@ -3054,7 +3054,7 @@ msgstr ""
 
 #: Cura/util/profile.py:555
 msgid "Head size towards Y min (mm)"
-msgstr "Tamañano del cabezal hacia Y min (mm)"
+msgstr "Tamaño del cabezal hacia Y min (mm)"
 
 #: Cura/util/profile.py:555 Cura/util/profile.py:556
 msgid ""
@@ -3068,11 +3068,11 @@ msgstr ""
 
 #: Cura/util/profile.py:556
 msgid "Head size towards X max (mm)"
-msgstr "Tamañano del cabezal hacia X max (mm)"
+msgstr "Tamaño del cabezal hacia X max (mm)"
 
 #: Cura/util/profile.py:557
 msgid "Head size towards Y max (mm)"
-msgstr "Tamañano del cabezal hacia Y max (mm)"
+msgstr "Tamaño del cabezal hacia Y max (mm)"
 
 #: Cura/util/profile.py:557
 msgid ""
