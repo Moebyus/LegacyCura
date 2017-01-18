@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cura\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 01:14+0100\n"
+"POT-Creation-Date: 2017-01-19 00:04+0100\n"
 "PO-Revision-Date: 2017-01-11 09:39+0100\n"
 "Last-Translator: Álvaro Gaviño González<alvaro@moebyus.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -459,11 +459,11 @@ msgstr "No se pudo conectar al programador\n"
 msgid "Failed to write firmware.\n"
 msgstr "No se pudo cargar firmware.\n"
 
-#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:656
+#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:657
 msgid "A new version of Cura is available, would you like to download?"
 msgstr "Una nueva versión de Cura está disponible ¿Quieres descargarla?"
 
-#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:656
+#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:657
 msgid "New version available"
 msgstr "Nueva versión disponible"
 
@@ -693,23 +693,23 @@ msgstr ""
 msgid "Open firmware to upload"
 msgstr "Abrir firmware para cargar"
 
-#: Cura/gui/mainWindow.py:659
+#: Cura/gui/mainWindow.py:660
 msgid "You are running the latest version of Cura!"
 msgstr "¡Estas usando la última versión de Cura!"
 
-#: Cura/gui/mainWindow.py:659
+#: Cura/gui/mainWindow.py:660
 msgid "Awesome!"
 msgstr "¡Impresionante!"
 
-#: Cura/gui/mainWindow.py:704
+#: Cura/gui/mainWindow.py:705
 msgid "Basic"
 msgstr "Básico"
 
-#: Cura/gui/mainWindow.py:708
+#: Cura/gui/mainWindow.py:709
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: Cura/gui/mainWindow.py:714
+#: Cura/gui/mainWindow.py:715
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -1011,8 +1011,8 @@ msgstr "Finales de carrera:"
 msgid "Show error log"
 msgstr "Mostrar log de errores"
 
-#: Cura/gui/configWizard.py:664 Cura/gui/configWizard.py:1242
-#: Cura/gui/configWizard.py:1461
+#: Cura/gui/configWizard.py:664 Cura/gui/configWizard.py:1243
+#: Cura/gui/configWizard.py:1462
 msgid "Connecting to machine."
 msgstr "Conectando a la maquina"
 
@@ -1042,8 +1042,8 @@ msgstr "Temp. cabezal %d"
 msgid "Communication State: %s"
 msgstr "Estado de comunicación: %s"
 
-#: Cura/gui/configWizard.py:737 Cura/gui/configWizard.py:1419
-#: Cura/gui/configWizard.py:1637
+#: Cura/gui/configWizard.py:737 Cura/gui/configWizard.py:1420
+#: Cura/gui/configWizard.py:1638
 msgid "Failed to establish connection with the printer."
 msgstr "Fallo al establecer la conexión con la impresora"
 
@@ -1181,83 +1181,83 @@ msgstr "¿Qué tipo de máquina tienes?:"
 msgid "Configuration Wizard"
 msgstr "Guía de configuración"
 
-#: Cura/gui/configWizard.py:1202 Cura/gui/configWizard.py:1650
+#: Cura/gui/configWizard.py:1203 Cura/gui/configWizard.py:1651
 msgid "Bed leveling wizard"
 msgstr "Nivelación de la cama"
 
-#: Cura/gui/configWizard.py:1204
+#: Cura/gui/configWizard.py:1205
 msgid "This wizard will help you in leveling your printer bed"
 msgstr "Este asistente le ayudará a nivelar la cama de la impresora"
 
-#: Cura/gui/configWizard.py:1206
+#: Cura/gui/configWizard.py:1207
 msgid "It will do the following steps"
 msgstr "Hará los siguientes pasos"
 
-#: Cura/gui/configWizard.py:1207
+#: Cura/gui/configWizard.py:1208
 msgid "* Move the printer head to each corner"
 msgstr "* Mover el cabezal a cada esquina"
 
-#: Cura/gui/configWizard.py:1208
+#: Cura/gui/configWizard.py:1209
 msgid "  and let you adjust the height of the bed to the nozzle"
 msgstr " y te dejarña ajustar la distancia de la cama a la boquilla"
 
-#: Cura/gui/configWizard.py:1209
+#: Cura/gui/configWizard.py:1210
 msgid "* Print a line around the bed to check if it is level"
 msgstr "* Imprimirá una línea alrededor de la cama para chequear el nivel"
 
-#: Cura/gui/configWizard.py:1212 Cura/gui/configWizard.py:1437
+#: Cura/gui/configWizard.py:1213 Cura/gui/configWizard.py:1438
 msgid "Connect to printer"
 msgstr "Conectar a la maquina"
 
-#: Cura/gui/configWizard.py:1216 Cura/gui/configWizard.py:1443
+#: Cura/gui/configWizard.py:1217 Cura/gui/configWizard.py:1444
 msgid "Resume"
 msgstr "Continuar"
 
-#: Cura/gui/configWizard.py:1217
+#: Cura/gui/configWizard.py:1218
 msgid "Up 0.2mm"
 msgstr "Arriba 0,2mm"
 
-#: Cura/gui/configWizard.py:1217
+#: Cura/gui/configWizard.py:1218
 msgid "Down 0.2mm"
 msgstr "Abajo 0,2mm"
 
-#: Cura/gui/configWizard.py:1218
+#: Cura/gui/configWizard.py:1219
 msgid "Up 10mm"
 msgstr "Arriba 10mm"
 
-#: Cura/gui/configWizard.py:1218
+#: Cura/gui/configWizard.py:1219
 msgid "Down 10mm"
 msgstr "Abajo 10mm"
 
-#: Cura/gui/configWizard.py:1278
+#: Cura/gui/configWizard.py:1279
 msgid "Homing printer..."
 msgstr "Punto de inicio..."
 
-#: Cura/gui/configWizard.py:1288
+#: Cura/gui/configWizard.py:1289
 msgid "Moving head to back center..."
 msgstr "Moviendo el cabezal a centro posterior..."
 
-#: Cura/gui/configWizard.py:1295
+#: Cura/gui/configWizard.py:1296
 msgid "Moving head to back left corner..."
 msgstr "Moviendo el cabezal hacia la esquina izquierda posterior..."
 
-#: Cura/gui/configWizard.py:1303 Cura/gui/configWizard.py:1317
+#: Cura/gui/configWizard.py:1304 Cura/gui/configWizard.py:1318
 msgid "Moving head to front right corner..."
 msgstr "Moviendo el cabezal hacia esquina derecha frontal..."
 
-#: Cura/gui/configWizard.py:1310
+#: Cura/gui/configWizard.py:1311
 msgid "Moving head to back right corner..."
 msgstr "Moviendo el cabezal a la esquina derecha posterior..."
 
-#: Cura/gui/configWizard.py:1324
+#: Cura/gui/configWizard.py:1325
 msgid "Heating up printer..."
 msgstr "Calentanado la impresora..."
 
-#: Cura/gui/configWizard.py:1331
+#: Cura/gui/configWizard.py:1332
 msgid "Printing a square on the printer bed at 0.3mm height."
 msgstr "Imprimiendo un cuadrado en la cama impresora a 0,3mm de altura."
 
-#: Cura/gui/configWizard.py:1371
+#: Cura/gui/configWizard.py:1372
 msgid ""
 "Adjust the front left screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1265,7 +1265,7 @@ msgstr ""
 "Ajusta el tornillo delantero izquierdo de la cama \n"
 "de modo que la boquilla roce ligeramente la misma."
 
-#: Cura/gui/configWizard.py:1376
+#: Cura/gui/configWizard.py:1377
 msgid ""
 "Adjust the back screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1273,7 +1273,7 @@ msgstr ""
 "Ajusta el tornillo trasero de la cama \n"
 "de modo que boquilla roce ligeramente la misma."
 
-#: Cura/gui/configWizard.py:1378
+#: Cura/gui/configWizard.py:1379
 msgid ""
 "Adjust the back left screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1281,7 +1281,7 @@ msgstr ""
 "Ajusta el tornillo trasero izquierdo de la cama \n"
 "de modo que boquilla roce ligeramente la misma."
 
-#: Cura/gui/configWizard.py:1382
+#: Cura/gui/configWizard.py:1383
 msgid ""
 "Adjust the back right screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1289,7 +1289,7 @@ msgstr ""
 "Ajustar el tornillo trasero derecho de la cama \n"
 "de modo que boquilla roce ligeramente la misma."
 
-#: Cura/gui/configWizard.py:1386
+#: Cura/gui/configWizard.py:1387
 msgid ""
 "Adjust the front right screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1297,25 +1297,25 @@ msgstr ""
 "Ajuste el tornillo frontal derecho la cama \n"
 "de modo que boquilla roce ligeramente la misma."
 
-#: Cura/gui/configWizard.py:1390
+#: Cura/gui/configWizard.py:1391
 #, python-format
 msgid "Heating up printer: %d/%d"
 msgstr "Calentando la impresora: %d/%d"
 
-#: Cura/gui/configWizard.py:1392
+#: Cura/gui/configWizard.py:1393
 msgid ""
 "The printer is hot now. Please insert some PLA filament into the printer."
 msgstr ""
 " La impresora ahora está caliente. Por favor, inserte filamento PLA en la "
 "impresora."
 
-#: Cura/gui/configWizard.py:1401
+#: Cura/gui/configWizard.py:1402
 msgid "Use the up/down buttons to move the bed and adjust your Z endstop."
 msgstr ""
 "Utiliza los botones arriba/abajo para mover la cama y ajustar su final de "
 "carrera Z."
 
-#: Cura/gui/configWizard.py:1413
+#: Cura/gui/configWizard.py:1414
 msgid ""
 "Calibration finished.\n"
 "The squares on the bed should slightly touch each other."
@@ -1323,7 +1323,7 @@ msgstr ""
 "Calibración terminada.\n"
 "Los cuadrado de la cama se deben tocar ligeramente el uno al otro."
 
-#: Cura/gui/configWizard.py:1434
+#: Cura/gui/configWizard.py:1435
 msgid ""
 "This wizard will help you in calibrating the printer head offsets of your "
 "dual extrusion machine"
@@ -1331,21 +1331,21 @@ msgstr ""
 "Este asistente te ayudará en la calibración del \"offset\" del cabezal doble "
 "de tu impresora"
 
-#: Cura/gui/configWizard.py:1467
+#: Cura/gui/configWizard.py:1468
 msgid "Printing initial calibration cross"
 msgstr "Impremiendo la cruz de calibración inicial"
 
-#: Cura/gui/configWizard.py:1515
+#: Cura/gui/configWizard.py:1516
 msgid ""
 "Please measure the distance between the horizontal lines in millimeters."
 msgstr ""
 "Por favor, mide la distancia entre las líneas horizontales en milímetros."
 
-#: Cura/gui/configWizard.py:1525
+#: Cura/gui/configWizard.py:1526
 msgid "Printing the fine calibration lines."
 msgstr "Imprimiendo las líneas de calibración fina."
 
-#: Cura/gui/configWizard.py:1580
+#: Cura/gui/configWizard.py:1581
 msgid ""
 "Which horizontal line number lays perfect on top of each other? Front most "
 "line is zero."
@@ -1353,25 +1353,25 @@ msgstr ""
 "¿Qué número de línea horizontal cuadra perfectamene con la otra? La linea "
 "más cercana es el cero."
 
-#: Cura/gui/configWizard.py:1591
+#: Cura/gui/configWizard.py:1592
 #, python-format
 msgid "Calibration finished. Offsets are: %s %s"
 msgstr "Calibración terminada. Las compensaciones son: %s %s"
 
-#: Cura/gui/configWizard.py:1604
+#: Cura/gui/configWizard.py:1605
 msgid "Please load both extruders with PLA."
 msgstr "Por favor cargar ambos extrusores con PLA."
 
-#: Cura/gui/configWizard.py:1613
+#: Cura/gui/configWizard.py:1614
 msgid "Homing printer and heating up both extruders."
 msgstr "Llevando a posición de inicio y calentando ambos extrusores."
 
-#: Cura/gui/configWizard.py:1623
+#: Cura/gui/configWizard.py:1624
 msgid "Please measure the distance between the vertical lines in millimeters."
 msgstr ""
 "Por favor, mide la distancia entre las líneas verticales en milímetros."
 
-#: Cura/gui/configWizard.py:1630
+#: Cura/gui/configWizard.py:1631
 msgid ""
 "Which vertical line number lays perfect on top of each other? Leftmost line "
 "is zero."
@@ -1379,44 +1379,48 @@ msgstr ""
 "¿Qué número línea vertical cuadra perfectamente con la otra? La línea de más "
 "a la izquierda es el cero."
 
-#: Cura/gui/configWizard.py:1679
+#: Cura/gui/configWizard.py:1680
 msgid "Head offset wizard"
 msgstr "Asistente de compensación del cabezal"
 
 #: Cura/gui/moebyusGui.py:145
+msgid "Moebyus Firmware"
+msgstr "Moebyus Firmware"
+
+#: Cura/gui/moebyusGui.py:176
 msgid "Moebyus Machines"
 msgstr "Moebyus Machines"
 
-#: Cura/gui/moebyusGui.py:160
+#: Cura/gui/moebyusGui.py:192
 msgid "Select Model:"
 msgstr "Selecciona el modelo:"
 
-#: Cura/gui/moebyusGui.py:235
+#: Cura/gui/moebyusGui.py:299
 msgid "Cura is now ready!"
 msgstr "¡Cura esta listo para su uso!"
 
-#: Cura/gui/moebyusGui.py:237
+#: Cura/gui/moebyusGui.py:301
 msgid "Thanks for installing our software, now you're ready to print"
 msgstr "Gracias por usar nuestro software, ¡ahora estas listo para imprimir!"
 
-#: Cura/gui/moebyusGui.py:240
+#: Cura/gui/moebyusGui.py:304
 msgid "You can find the latest version of this software at: "
 msgstr "Puedes encontrar la ultima versión de este software en: "
 
-#: Cura/gui/moebyusGui.py:241
+#: Cura/gui/moebyusGui.py:305
 msgid "https://github.com/moebyus/cura/releases"
 msgstr "https://github.com/moebyus/cura/releases"
 
-#: Cura/gui/moebyusGui.py:243
+#: Cura/gui/moebyusGui.py:307
 msgid ""
 "Also you can find and Download all the files regarding your machine at: "
 msgstr "Además puedes encontrar todos los ficheros para tu máquina en:"
 
-#: Cura/gui/moebyusGui.py:244
+#: Cura/gui/moebyusGui.py:308
 msgid "https://github.com/moebyus"
 msgstr "https://github.com/moebyus"
 
-#: Cura/gui/moebyusGui.py:247
+#: Cura/gui/moebyusGui.py:311
 msgid "May the Force be with you..."
 msgstr "Que la fuerza te acompañe..."
 
@@ -1455,7 +1459,7 @@ msgstr "Material:"
 
 #: Cura/gui/simpleMode.py:186
 msgid "Profile:"
-msgstr "Perfíl:"
+msgstr "Perfíl de impresión:"
 
 #: Cura/gui/simpleMode.py:194
 msgid "Other:"
@@ -2074,14 +2078,14 @@ msgstr ""
 
 #: Cura/util/profile.py:205
 msgid "Dual extrusion switch amount (mm)"
-msgstr "Extrusión dual cantidad de cambio (mm)"
+msgstr "Retracción al cambiar material (mm)"
 
 #: Cura/util/profile.py:205
 msgid ""
 "Amount of retraction when switching nozzle with dual-extrusion, set at 0 for "
 "no retraction at all. A value of 16.0mm seems to generate good results."
 msgstr ""
-"Cantidd de retracción al cambiar de nozzle con extrusión dual, fijar a 0 "
+"Cantidad de retracción al cambiar de nozzle con extrusión dual, fijar a 0 "
 "para no retraer. Un valor de 16 mm parece ofrecer buenos resultados."
 
 #: Cura/util/profile.py:206
@@ -3077,7 +3081,7 @@ msgstr ""
 
 #: Cura/util/profile.py:554
 msgid "Head size towards X min (mm)"
-msgstr "Tamañano del cabezal hacia X min (mm)"
+msgstr "Tamaño del cabezal hacia X min (mm)"
 
 #: Cura/util/profile.py:554
 msgid ""
@@ -3091,7 +3095,7 @@ msgstr ""
 
 #: Cura/util/profile.py:555
 msgid "Head size towards Y min (mm)"
-msgstr "Tamañano del cabezal hacia Y min (mm)"
+msgstr "Tamaño del cabezal hacia Y min (mm)"
 
 #: Cura/util/profile.py:555 Cura/util/profile.py:556
 msgid ""
@@ -3105,11 +3109,11 @@ msgstr ""
 
 #: Cura/util/profile.py:556
 msgid "Head size towards X max (mm)"
-msgstr "Tamañano del cabezal hacia X max (mm)"
+msgstr "Tamaño del cabezal hacia X max (mm)"
 
 #: Cura/util/profile.py:557
 msgid "Head size towards Y max (mm)"
-msgstr "Tamañano del cabezal hacia Y max (mm)"
+msgstr "Tamaño del cabezal hacia Y max (mm)"
 
 #: Cura/util/profile.py:557
 msgid ""
