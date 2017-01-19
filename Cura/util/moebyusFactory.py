@@ -53,7 +53,8 @@ def setCommonSettings() :
 	profile.putProfileSetting('raft_surface_thickness' 	, '0.2')
 						
 def setAlterations() :
-	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start.gcode', """;Default Moebyus start GCODE
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -77,7 +78,8 @@ G1 F{travel_speed}
 M117 Materializando...
 """)
 
-	profile.setAlterationFile('end.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('end.gcode', """;Default Moebyus end GCODE
+;Sliced at: {day} {date} {time}
 ;End GCode
 M104 S0                    ;extruder heater off
 M140 S0                    ;heated bed heater off (if you have it)
@@ -92,7 +94,8 @@ M117 Terminado!
 """)
 
 def setAlterationsMelta() :
-	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for Melta
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -117,7 +120,8 @@ M117 Materializando...
 """)		
 
 def setAlterationsMeltaXXL() :
-	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for MeltaXL
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -142,7 +146,8 @@ M117 Materializando...
 """)
 
 def setAlterationsM3() :
-	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for M3
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -166,7 +171,8 @@ M117 Materializando...
 """)
 
 def setAlterationsOne() :
-	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for One
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -191,7 +197,8 @@ M117 Materializando...
 """)		
 
 def setAlterationsSirius() :
-	profile.setAlterationFile('start2.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start2.gcode', """;Moebyus start2 GCODE for SIRIUS
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -227,7 +234,8 @@ G1 F{travel_speed}
 M117 Materializando...
 """)
 
-	profile.setAlterationFile('end2.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('end2.gcode', """;Moebyus end2 GCODE for SIRIUS
+;Sliced at: {day} {date} {time}
 ;End GCode
 M104 T0 S0                 ;extruder heater off
 M104 T1 S0                 ;extruder heater off
@@ -243,7 +251,13 @@ M117 Terminado!
 """)
 
 def setAlterationsSiriusRight() :
-	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for SIRIUS Right extruder
+M109 S0
+M117 Enabled Right extruder!
+T1
+M109 S{print_temperature}
+
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -256,7 +270,6 @@ M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
 G28
 G29                     ;Run the auto bed leveling
-T1
 G1 X300 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
 G1 F300 E20             ;extrude 3mm of feed stock
@@ -269,7 +282,8 @@ G1 F{travel_speed}
 M117 Materializando...
 """)
 
-	profile.setAlterationFile('end.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('end.gcode', """;Moebyus end GCODE for SIRIUS Right extruder
+;Sliced at: {day} {date} {time}
 ;End GCode
 M104 S0                    ;extruder heater off
 M140 S0                    ;heated bed heater off (if you have it)
@@ -285,7 +299,15 @@ T0
 """)
 	
 def setAlterationsSiriusDuplicator() :
-	profile.setAlterationFile('start.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for SIRIUS duplicator
+
+M605 S2
+M117 Duplicator Enabled!
+G28
+G29                     ;Run the auto bed leveling
+M109 S{print_temperature}
+
+;Sliced at: {day} {date} {time}
 ;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
 ;Print time: {print_time}
 ;Filament used: {filament_amount}m {filament_weight}g
@@ -296,9 +318,6 @@ G21                     ;metric values
 G90                     ;absolute positioning
 M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
-M605 S2
-G28
-G29                     ;Run the auto bed leveling
 G1 Z5.0 F{travel_speed} ;move the platform down 5mm
 G92 E0                  ;zero the extruded length
 G1 F200 E20             ;extrude 3mm of feed stock
@@ -309,7 +328,8 @@ G1 F{travel_speed}
 M117 Materializando...
 """)
 
-	profile.setAlterationFile('end.gcode', """;Sliced at: {day} {date} {time}
+	profile.setAlterationFile('end.gcode', """;Moebyus end GCODE for SIRIUS Duplicator
+;Sliced at: {day} {date} {time}
 ;End GCode
 M104 S0                    ;extruder heater off
 M140 S0                    ;heated bed heater off (if you have it)
@@ -371,21 +391,25 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 	profile.putProfileSetting('raft_surface_linewidth' 	, float(nozzleSize) * 1.1 )
 		
 	setAlterations()
+	
 	if machineType == 'Melta':
 		profile.putMachineSetting('has_heated_bed', 'False')
 		profile.putMachineSetting('machine_center_is_zero', 'True')	
 		profile.putMachineSetting('machine_shape', 'Circular')
 		setAlterationsMelta()
+		
 	elif machineType == 'MeltaXL':
 		profile.putMachineSetting('has_heated_bed', 'True')
 		profile.putMachineSetting('machine_center_is_zero', 'True')	
 		profile.putMachineSetting('machine_shape', 'Circular')
 		setAlterationsMeltaXXL()
+		
 	elif machineType == 'M3':
 		profile.putMachineSetting('has_heated_bed', 'False')
 		profile.putMachineSetting('machine_center_is_zero', 'False')	
 		profile.putMachineSetting('machine_shape', 'Square')		
 		setAlterationsM3()
+		
 	elif machineType == 'MoebyusOne':
 		profile.putMachineSetting('has_heated_bed'				, 'False')
 		profile.putMachineSetting('machine_center_is_zero'		, 'False')
@@ -398,17 +422,19 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		profile.putProfileSetting('fan_speed_max' 			, '90')
 		profile.putProfileSetting('cool_min_feedrate' 		, '10')
 		profile.putPreference	 ('startMode'				, 'Simple')
-		
 		setAlterationsOne()
+		
 	elif machineType == 'Sirius1' or machineType == 'Sirius11':
 		profile.putMachineSetting('extruder_amount', '2')
 		setAlterationsSirius()
+		
 	elif machineType == 'Sirius1-right' or machineType == 'Sirius11-right':
 		profile.putMachineSetting('extruder_amount', '1')
-		setAlterationsSirius()
+		setAlterationsSiriusRight()
+		
 	elif machineType == 'Sirius1-duplication' or machineType == 'Sirius11-duplication':
 		profile.putMachineSetting('extruder_amount', '1')
-		setAlterationsSirius()
+		setAlterationsSiriusDuplicator()
 
 def genProfileForMachine (machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
 	print("Gen Profile for:")
