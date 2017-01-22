@@ -1161,7 +1161,6 @@ class ConfigWizard(wx.wizard.Wizard):
 #Moebyus mod
 		self.MoebyusSelectModel		= moebyusGui.MoebyusSelectModelPage(self)
 		self.MoebyusDonePage 		= moebyusGui.MoebyusDonePage(self)
-		self.MoebyusFirmwarePage 	= moebyusGui.moebyusFirmwarePage(self)
 		self.ultimakerSelectModel	= UltimakerMachineSelectPage(self)		
 		wx.wizard.WizardPageSimple.Chain(self.machineSelectPage	, self.MoebyusSelectModel)
 		wx.wizard.WizardPageSimple.Chain(self.MoebyusSelectModel, self.MoebyusDonePage)

@@ -483,7 +483,43 @@ def isMoebyusMachine(machineType = profile.getMachineSetting('machine_type'))	:
 			return True
 			
 	return False
-		
+
+def hasFirmwareForMachine(machineType = profile.getMachineSetting('machine_type'))	:
+	banList =  ["MoebyusOne",
+				"MeltaXL",
+				"M3"]
+	if isMoebyusMachine(machineType) :
+		for ban in banList :
+			if ban == machineType  :
+				return False
+		return True
+	else :
+		return False		
+
+def getMachineThumb(machineType = profile.getMachineSetting('machine_type')) :
+		printer_info = [
+		# max Size x, y, z,machine type
+		("MoebyusOne" 			, "mone.png" ),
+		("PrusaI3MM"  			, "prusai3mm.png" ),
+		("PrusaI3MM-L"			, "prusai3mml.png" ),
+		("SteelMM"				, "steelmm.png" ),
+		("SteelMM-L"  			, "steelmml.png" ),
+		("SteelMM-Sirius"		, "steelsirius.png" ),
+		("Melta"				, "melta.png" ),
+		("MeltaXL"				, "meltaxl.png" ),
+		("Sirius1"				, "sirius1.png" ),
+		("Sirius1-right"		, "sirius1.png" ),
+		("Sirius1-duplication"	, "sirius1.png" ),
+		("Sirius11"				, "sirius11.png" ),
+		("Sirius11-right"		, "sirius11.png" ),
+		("Sirius11-duplication"	, "sirius11.png" ),
+		("M3"					, "m3.png") ]
+		for machine in printer_info :
+			if machine[0] == machineType :
+				return machine[1]
+		return None
+			
+			
 
 def resetProfile()  :
 	setMachineProperties(getMachineSetting('machine_type'),getMachineSetting('filament_diameter'),getMachineSetting('nozzle_size'))
