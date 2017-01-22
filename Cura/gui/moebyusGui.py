@@ -134,17 +134,20 @@ class MoebyusInfoPage(wx.wizard.WizardPageSimple):
 
 class moebyusFirmwareSelector(wx.Dialog) :
 	def __init__(self, parent = None)  :
-		super(moebyusFirmwareSelector, self).__init__(parent=parent, title="Select your machine", size=(800, 500))
+		super(moebyusFirmwareSelector, self).__init__(parent=parent, title="Moebyus Machines Firmware loader", size=(800, 600))
 
 		sizer = wx.GridBagSizer(5, 5)
 		self.sizer = sizer
 		self.SetSizer(sizer)
 
 		sizer.AddGrowableCol(0)
-		self.rowNr = 1
+		self.rowNr = 0
+		
+		
 		
 		self.firmwareFile = ''
 		self.machineSelection = []
+		self.lcdSelection = []		
 		self.machines = [
 					("Prusa I3\t\t\t(200x200x200)"			,"PrusaI3MM"),
 					("Prusa MM - L\t\t(200x300x200)"		,"PrusaI3MM-L"),
@@ -155,18 +158,28 @@ class moebyusFirmwareSelector(wx.Dialog) :
 					("[SIRIUS] 1.0\t\t(200x200x200)"		,"Sirius1"),
 					("[SIRIUS] 1.1\t\t(200x200x200)"		,"Sirius11")]
 
+		self.lcds = [ ('LCD Full Graphic'  , 'lcdFull') ,
+					  ('LCD Smart Discount', 'lcdSmart') ]
+
+
+		title = wx.StaticText(self, -1, 'Select Machine Type')
+		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
+		self.GetSizer().Add(title, pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
+		self.rowNr += 1
+		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
+		self.rowNr += 1
+		
 
 		bitmap = wx.Bitmap(resources.getPathForImage(moebyusFactory.getMachineThumb('PrusaI3MM')))
 		self.previewBitmap = wx.StaticBitmap(self, -1, bitmap)
-		self.GetSizer().Add(self.previewBitmap, pos=(1, 3), span=(14, 2), flag=wx.LEFT | wx.RIGHT)
+		self.GetSizer().Add(self.previewBitmap, pos=(1, 3), span=(16, 2), flag=wx.LEFT | wx.RIGHT)
 		self.rowNr += 1
-		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
-		self.rowNr += 1				
+
 		i = 0;
 		for machine in self.machines:
 			if i == 0:
 				item = wx.RadioButton(self, -1, machine[0] , style=wx.RB_GROUP)
-				self.GetSizer().Add(item, pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
+				self.GetSizer().Add(item, pos=(self.rowNr, 0), span=(1, 2))
 				self.rowNr += 1
 				i+=1;
 				item.data = machine[1:]
@@ -174,15 +187,45 @@ class moebyusFirmwareSelector(wx.Dialog) :
 				item.Bind(wx.EVT_RADIOBUTTON, self.OnMachineSelect)
 			else:
 				item = wx.RadioButton(self, -1, machine[0])
-				self.GetSizer().Add(item, pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
+				self.GetSizer().Add(item, pos=(self.rowNr, 0), span=(1, 2))
 				self.rowNr += 1
 				i+=1;
 				item.data = machine[1:]
 				self.machineSelection.append(item)
 				item.Bind(wx.EVT_RADIOBUTTON, self.OnMachineSelect)
 
+
+		title = wx.StaticText(self, -1, 'Select lcd type')
+		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
+		self.GetSizer().Add(title, pos=(self.rowNr, 0), span=(1, 2),flag=wx.EXPAND | wx.ALL)
+		self.rowNr += 1
 		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
 		self.rowNr += 1
+		i = 0
+		for lcd in self.lcds:
+			if i == 0:
+				item = wx.RadioButton(self, -1, lcd[0] , style=wx.RB_GROUP)
+				self.GetSizer().Add(item, pos=(self.rowNr, 0), span=(1, 2))
+				self.rowNr += 1
+				i+=1;
+				item.data = lcd[1:]
+				self.lcdSelection.append(item)
+				item.Bind(wx.EVT_RADIOBUTTON, self.onLcdSelect)
+			else:
+				item = wx.RadioButton(self, -1, lcd[0])
+				self.GetSizer().Add(item, pos=(self.rowNr, 0), span=(1, 2))
+				self.rowNr += 1
+				i+=1;
+				item.data = lcd[1:]
+				self.lcdSelection.append(item)
+				item.Bind(wx.EVT_RADIOBUTTON, self.onLcdSelect)
+
+
+		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
+		self.rowNr += 1
+
+
+
 
 		button_sizer = wx.BoxSizer(wx.HORIZONTAL)
 		okButton = wx.Button(self, wx.ID_OK	 , "Install Firmware")
@@ -195,6 +238,11 @@ class moebyusFirmwareSelector(wx.Dialog) :
 	def getFilename(self)  :
 		return self.firmwareFile
 
+	def onLcdSelect(self,e) :
+		for selected in self.lcdSelection :
+			if selected.GetValue():
+				print(selected.GetLabel())
+			
 	def OnMachineSelect(self, e):
 		for selected in self.machineSelection :
 			if selected.GetValue():
