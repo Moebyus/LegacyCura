@@ -2941,7 +2941,7 @@ msgstr ""
 
 #: Cura/util/profile.py:535
 msgid "Build area shape"
-msgstr "Construye forma de área"
+msgstr "Geometría de la base"
 
 #: Cura/util/profile.py:535
 msgid "The shape of machine build area."
@@ -2956,7 +2956,7 @@ msgstr ""
 
 #: Cura/util/profile.py:538
 msgid "GCode Flavor"
-msgstr "GCode Flavor"
+msgstr "Estilo GCode"
 
 #: Cura/util/profile.py:538
 msgid ""
