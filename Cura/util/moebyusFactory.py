@@ -462,4 +462,28 @@ def genProfileForMachine (machineType = "PrusaI3MM", filamentSize = 3 , nozzleSi
 	setCommonSettings()
 	setMachineProperties(machineType,filamentSize,nozzleSize)
 
-	
+def isMoebyusMachine(machineType = profile.getMachineSetting('machine_type'))	:
+	moebyusMachines = ["MoebyusOne",
+						"PrusaI3MM",
+						"PrusaI3MM-L",
+						"SteelMM",
+						"SteelMM-L",
+						"SteelMM-Sirius",
+						"Melta",
+						"MeltaXL",
+						"Sirius1",
+						"Sirius1-right",
+						"Sirius1-duplication",
+						"Sirius11",
+						"Sirius11-right",
+						"Sirius11-duplication",
+						"M3"]
+	for machine in moebyusMachines :
+		if machine == machineType  :
+			return True
+			
+	return False
+		
+
+def resetProfile()  :
+	setMachineProperties(getMachineSetting('machine_type'),getMachineSetting('filament_diameter'),getMachineSetting('nozzle_size'))

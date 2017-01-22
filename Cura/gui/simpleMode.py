@@ -24,7 +24,7 @@ class ProfileInfo(object):
 		if cp.has_option('info', 'material'):
 			self.material = cp.get('info', 'material')
 		if cp.has_option('info', 'nozzle_size'):
-			self.nozzle_size = cp.get('info', 'nozzle_size')
+			self.nozzle_size = cp.get('info', 'nozzle_size')#posible bug? no deberia ser if cp.has_option('info', 'order'): ???
 		if cp.has_option('info', 'nozzle_size'):
 			self.order = int(cp.get('info', 'order'))
 
