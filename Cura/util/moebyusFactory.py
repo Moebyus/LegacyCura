@@ -344,7 +344,7 @@ M117 Terminado!
 
 def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
 	_printer_info = [
-		("Moebyus One"				, 150, 150, 150, "MoebyusOne"),
+		("One"						, 150, 150, 150, "MoebyusOne"),
 		("Prusa i3 MM"				, 200, 200, 190, "PrusaI3MM" ),
 		("Prusa i3 MM Large"		, 200, 300, 190, "PrusaI3MM-L"),
 		("Steel MM"					, 200, 200, 200, "SteelMM"),
@@ -358,14 +358,17 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		("[SIRIUS] Normal & Dual"	, 310, 200, 260, "Sirius11"),
 		("[SIRIUS] Right Extruder"	, 310, 200, 260, "Sirius11-right"),
 		("[SIRIUS] Duplicator"		, 150, 200, 260, "Sirius11-duplication"),
-		("Moebyus M3"				, 1000,1000,1000, "M3") ]
+		("M3"						, 1000,1000,1000, "M3") ]
 
 	profile.putMachineSetting('machine_type'  		, machineType)
 	profile.putProfileSetting('nozzle_size' 		, nozzleSize)
 	profile.putPreference	 ('simpleModeNozzle' 	, nozzleSize)
 	
 	profile.putProfileSetting('filament_diameter'	, filamentSize)
-	profile.putProfileSetting('retraction_speed' 	, 60)
+	if filamentSize == '3.0' :
+		profile.putProfileSetting('retraction_speed' 	, 25)
+	else :
+		profile.putProfileSetting('retraction_speed' 	, 60)
 	profile.putProfileSetting('retraction_amount'	, 3.5)
 
 
@@ -434,7 +437,7 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		profile.putMachineSetting('extruder_amount', '1')
 		setAlterationsSiriusDuplicator()
 
-def genProfileForMachine (machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
+def genProfileForMachine(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
 	print("Gen Profile for:")
 	print(machineType)
 
@@ -515,9 +518,7 @@ def getMachineThumb(machineType = profile.getMachineSetting('machine_type')) :
 		for machine in printer_info :
 			if machine[0] == machineType :
 				return machine[1]
-		return None
-			
-			
+		return None		
 
 def resetProfile()  :
 	setMachineProperties(getMachineSetting('machine_type'),getMachineSetting('filament_diameter'),getMachineSetting('nozzle_size'))

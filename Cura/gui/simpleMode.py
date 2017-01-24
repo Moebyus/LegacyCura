@@ -148,7 +148,7 @@ class simpleModePanel(wx.Panel):
 			if profile.getPreference('simpleModeProfile') == name:
 				button.SetValue(True)
 
-		if len(self._print_nozzle_options) < 1:
+		if len(self._print_nozzle_options) < 2:
 			printNozzlePanel.Show(False)
 		if len(self._print_material_options) < 1:
 			printMaterialPanel.Show(False)

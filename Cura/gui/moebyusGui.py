@@ -256,17 +256,17 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 		super(MoebyusSelectModelPage, self).__init__(parent, _("Moebyus Machines"))
 		self._printer_info = [
 			# max Size x, y, z,machine type
-			("Moebyus One\t\t\t\t(150x150x150)"			, "MoebyusOne"  ),
-			("Prusa i3 MM\t\t\t\t\t(200x200x200)"			, "PrusaI3MM"  	),
-			("Prusa i3 MM Large\t\t\t(200x300x200)"		, "PrusaI3MM-L"	),
-			("Steel MM\t\t\t\t\t\t(200x200x200)"			, "SteelMM"	    ),
-			("Steel MM Large\t\t\t\t(300x200x200)"		, "SteelMM-L"  	),
-			("Steel MM Marco Sirius\t(300x200x200)"		, "SteelMM-Sirius" ),
-			("Melta Kossel\t\t\t\t\t(160x300)"			, "Melta"	 	),
-			("Melta XL\t\t\t\t\t\t(400x600)"				, "MeltaXL"		),
-			("[SIRIUS] 1.0\t\t\t\t\t(300x200x200)"		, "Sirius1"		),
-			("[SIRIUS] 1.1\t\t\t\t\t(300x200x250)"		, "Sirius11"	),
-			("Moebyus M3\t\t\t\t\t(1000x1000x1000)"		, "M3"			)]
+			("One\t\t\t\t\t\t(150x150x150)"				, "MoebyusOne"    ),
+			("Prusa i3 MM\t\t\t\t(200x200x200)"			, "PrusaI3MM"  	  ),
+			("Prusa i3 MM Large\t\t(200x300x200)"		, "PrusaI3MM-L"	  ),
+			("Steel MM\t\t\t\t\t(200x200x200)"			, "SteelMM"	      ),
+			("Steel MM Large\t\t\t(300x200x200)"		, "SteelMM-L"  	  ),
+			("Steel MM Marco Sirius\t(300x200x200)"		, "SteelMM-Sirius"),
+			("Melta Kossel\t\t\t\t(160x300)"			, "Melta"	 	  ),
+			("Melta XL\t\t\t\t\t(400x600)"				, "MeltaXL"		  ),
+			("[SIRIUS] 1.0\t\t\t\t(300x200x200)"		, "Sirius1"		  ),
+			("[SIRIUS] 1.1\t\t\t\t(300x200x250)"		, "Sirius11"	  ),
+			("M3\t\t\t\t\t\t\t(1000x1000x1000)"			, "M3"			  )]
 		self.parent = parent
 #Seleccion de maquina
 		self.AddText(_("Select Model:"))
@@ -291,7 +291,7 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 		self.rowNr += 1
 		self.AddSeperator()
 
-		filaments = ['1.75','3']
+		filaments = ['1.75','3.0']
 		self.comboFilaments = wx.ComboBox(self, -1, filaments[0], choices=filaments, style=wx.CB_DROPDOWN|wx.CB_READONLY)
 		text = wx.StaticText(self, -1, "Filament size")
 		self.GetSizer().Add(text,  pos=(self.rowNr, 0), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
@@ -303,6 +303,11 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 		self.GetSizer().Add(text,  pos=(self.rowNr, 2), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
 		self.GetSizer().Add(self.comboNozzles, pos=(self.rowNr, 3), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
 		self.rowNr += 1
+		
+		self.comboNozzles.Disable()
+		self.comboFilaments.Disable()
+		self.comboNozzles.SetSelection(3)
+		self.comboFilaments.SetSelection(0)
 
 #Configuracion del perfil
 	def StoreData(self):
@@ -324,31 +329,26 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 				if values[0] == 'MoebyusOne' :
 					self.comboNozzles.Disable()
 					self.comboFilaments.Disable()
-					self.checkFirmware.Disable()
 					self.comboNozzles.SetSelection(3)
 					self.comboFilaments.SetSelection(0)
 				elif values[0] == 'M3' :
 					self.comboNozzles.Enable()
 					self.comboFilaments.Disable()
-					self.checkFirmware.Disable()
 					self.comboNozzles.SetSelection(6)
 					self.comboFilaments.SetSelection(0)
 				elif values[0] == 'MeltaXL' :
 					self.comboNozzles.Enable()
 					self.comboFilaments.Disable()
-					self.checkFirmware.Disable()
 					self.comboNozzles.SetSelection(6)
 					self.comboFilaments.SetSelection(0)
 				elif values[0] == 'Sirius1' or  values[0] == 'Sirius11' or values[0] == 'SteelMM-Sirius' or values[0] == 'Melta' :
 					self.comboNozzles.Enable()
 					self.comboFilaments.Enable()
-					self.checkFirmware.Enable()
 					self.comboNozzles.SetSelection(3)
 					self.comboFilaments.SetSelection(0)
 				else :
 					self.comboNozzles.Enable()
 					self.comboFilaments.Enable()
-					self.checkFirmware.Enable()
 					self.comboNozzles.SetSelection(3)
 					self.comboFilaments.SetSelection(1)					
 
