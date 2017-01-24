@@ -304,27 +304,6 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 		self.GetSizer().Add(self.comboNozzles, pos=(self.rowNr, 3), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
 		self.rowNr += 1
 
-		self.AddSeperator()
-		text = wx.StaticText(self, -1, 'Options')
-		self.GetSizer().Add(text, pos=(self.rowNr, 0), span=(1, 1), flag=wx.ALL)		
-		self.rowNr += 1
-		self.checkFirmware = wx.CheckBox(self, -1)
-		text = wx.StaticText(self, -1, 'Load Firmware')
-		self.checkFirmware.SetValue(0)
-		self.checkFirmware.Disable()
-		self.GetSizer().Add(text,  pos=(self.rowNr, 0), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
-		self.GetSizer().Add(self.checkFirmware, pos=(self.rowNr, 1), span=(1, 1), flag=wx.ALL)
-
-		self.checkLevel = wx.CheckBox(self, -1)
-		text = wx.StaticText(self, -1, 'Level Bed')
-		self.checkLevel.SetValue(0)
-		self.checkLevel.Disable()
-		self.GetSizer().Add(text,  pos=(self.rowNr, 2), span=(1, 1), flag=wx.LEFT | wx.RIGHT)
-		self.GetSizer().Add(self.checkLevel, pos=(self.rowNr, 3), span=(1, 1), flag=wx.ALL)
-
-		self.rowNr += 1
-
-
 #Configuracion del perfil
 	def StoreData(self):
 		mType = "PrusaI3MM"
