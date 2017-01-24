@@ -4,10 +4,10 @@ import wx
 from Cura.util import profile
 
 def setCuraSettings() :
-	profile.putPreference('startMode'						, 'Normal')
-	profile.putPreference('filament_cost_kg'				, '18')
-	profile.putPreference('filament_physical_density'		, '1050')
-	profile.putPreference('printing_window'					, 'Pronterface UI')
+	profile.putPreference('startMode'					, 'Normal')
+	profile.putPreference('filament_cost_kg'			, '18')
+	profile.putPreference('filament_physical_density'	, '1050')
+	profile.putPreference('printing_window'				, 'Pronterface UI')
 
 def setCommonSettings() :
 #Default machine settings
@@ -352,10 +352,10 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		("Steel MM Marco Sirius"	, 310, 200, 260, "SteelMM-Sirius"),
 		("Melta Kossel"				, 160, 160, 300, "Melta"),
 		("Melta XL"					, 400, 400, 600, "MeltaXL"),
-		("[SIRIUS] Normal & Dual"	, 300, 200, 200, "Sirius1"),
+		("[SIRIUS] Normal Dual"		, 300, 200, 200, "Sirius1"),
 		("[SIRIUS] Right Extruder"	, 300, 200, 200, "Sirius1-right"),		
 		("[SIRIUS] Duplicator"		, 150, 200, 200, "Sirius1-duplication"),
-		("[SIRIUS] Normal & Dual"	, 310, 200, 260, "Sirius11"),
+		("[SIRIUS] Normal Dual"		, 310, 200, 260, "Sirius11"),
 		("[SIRIUS] Right Extruder"	, 310, 200, 260, "Sirius11-right"),
 		("[SIRIUS] Duplicator"		, 150, 200, 260, "Sirius11-duplication"),
 		("M3"						, 1000,1000,1000, "M3") ]
@@ -363,6 +363,7 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 	profile.putMachineSetting('machine_type'  		, machineType)
 	profile.putProfileSetting('nozzle_size' 		, nozzleSize)
 	profile.putPreference	 ('simpleModeNozzle' 	, nozzleSize)
+	profile.putPreference	 ('simpleModeMaterial'	, "PLA")
 	
 	profile.putProfileSetting('filament_diameter'	, filamentSize)
 	if filamentSize == '3.0' :
