@@ -162,12 +162,10 @@ G28
 G29                     ;Run the auto bed leveling
 G1 Z5.0 F{travel_speed} ;move the platform down 5mm
 G92 E0                  ;zero the extruded length
-G1 F200 E25             ;extrude 3mm of feed stock
+G1 F300 E25             ;extrude 3mm of feed stock
+G0 Z0.5 Y50 E40 F500
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 Y50 E40
 G1 F{travel_speed}
-;Put printing message on LCD screen
-M117 Materializando...
 """)
 
 def setAlterationsOne() :
