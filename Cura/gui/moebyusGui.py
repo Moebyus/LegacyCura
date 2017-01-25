@@ -153,10 +153,10 @@ class moebyusFirmwareSelector(wx.Dialog) :
 					("Prusa MM - L\t\t(200x300x200)"		,"PrusaI3MM-L"),
 					("Steel MM\t\t\t(200x200x200)"			,"SteelMM"),
 					("Steel MM - L\t\t(300x200x200)"		,"SteelMM-L"),
-					("Steel MM Marco Sirius\t(300x200x200)"	,"SteelMM-Sirius"),
+					("Steel MM Marco Sirius\t(300x200x260)"	,"SteelMM-Sirius"),
 					("Melta Kossel\t\t(160x300)"			,"Melta"),
-					("[SIRIUS] 1.0\t\t(200x200x200)"		,"Sirius1"),
-					("[SIRIUS] 1.1\t\t(200x200x200)"		,"Sirius11")]
+					("[SIRIUS] 1.0\t\t(300x200x200)"		,"Sirius1"),
+					("[SIRIUS] 1.1\t\t(300x200x250)"		,"Sirius11")]
 
 		self.lcds = [ ('LCD Full Graphic'  , 'lcdFull') ,
 					  ('LCD Smart Discount', 'lcdSmart') ]
@@ -261,7 +261,7 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 			("Prusa i3 MM Large\t\t(200x300x200)"		, "PrusaI3MM-L"	  ),
 			("Steel MM\t\t\t\t\t(200x200x200)"			, "SteelMM"	      ),
 			("Steel MM Large\t\t\t(300x200x200)"		, "SteelMM-L"  	  ),
-			("Steel MM Marco Sirius\t(300x200x200)"		, "SteelMM-Sirius"),
+			("Steel MM Marco Sirius\t(300x200x250)"		, "SteelMM-Sirius"),
 			("Melta Kossel\t\t\t\t(160x300)"			, "Melta"	 	  ),
 			("Melta XL\t\t\t\t\t(400x600)"				, "MeltaXL"		  ),
 			("[SIRIUS] 1.0\t\t\t\t(300x200x200)"		, "Sirius1"		  ),
