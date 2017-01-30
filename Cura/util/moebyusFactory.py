@@ -145,6 +145,21 @@ G1 F{travel_speed}
 M117 Materializando...
 """)
 
+	profile.setAlterationFile('end.gcode', """;Default Moebyus end GCODE for MELTAXL
+;Sliced at: {day} {date} {time}
+;End GCode
+M104 S0                    ;extruder heater off
+M140 S0                    ;heated bed heater off (if you have it)
+G91                        ;relative positioning
+G1 E-2.5 F500              ;retract the filament a bit before lifting the nozzle, to release some of the pressure
+G1 Z+2 E-3 F{travel_speed} ;move Z up a bit and retract filament even more
+G28
+G90                        ;absolute positioning
+M117 Terminado!
+;{profile_string}
+""")
+
+
 def setAlterationsM3() :
 	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for M3
 ;Sliced at: {day} {date} {time}
