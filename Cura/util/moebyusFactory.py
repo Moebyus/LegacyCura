@@ -265,7 +265,7 @@ M117 Terminado!
 
 def setAlterationsSiriusRight() :
 	profile.setAlterationFile('start.gcode', """;Moebyus start GCODE for SIRIUS Right extruder
-M109 S0
+M104 S0
 M117 Enabled Right extruder!
 T1
 M109 S{print_temperature}
