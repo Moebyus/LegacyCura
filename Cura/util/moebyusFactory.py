@@ -406,7 +406,7 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		("Melta Kossel"				, 160, 160, 300, "Melta"),
 		("Melta XL"					, 400, 400, 600, "MeltaXL"),
 		("[SIRIUS] Normal Dual"		, 300, 200, 200, "Sirius1"),
-		("[SIRIUS] Right Extruder"	, 300, 200, 200, "Sirius1-right"),		
+		("[SIRIUS] Right Extruder"	, 300, 200, 200, "Sirius1-right"),
 		("[SIRIUS] Duplicator"		, 150, 200, 200, "Sirius1-duplication"),
 		("[SIRIUS] Normal Dual"		, 310, 200, 260, "Sirius11"),
 		("[SIRIUS] Right Extruder"	, 310, 200, 260, "Sirius11-right"),
@@ -424,7 +424,6 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 	else :
 		profile.putProfileSetting('retraction_speed' 	, 60)
 	profile.putProfileSetting('retraction_amount'	, 3.5)
-
 
 	profile.putMachineSetting('machine_width' , 199)
 	profile.putMachineSetting('machine_depth' , 199)
