@@ -132,17 +132,14 @@ G21                     ;metric values
 G90                     ;absolute positioning
 M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
-G28   
-G29                     ;Run the auto bed leveling
-G1 Z50 F{travel_speed} ;move the platform down 5mm
-G1 X180
+G28
 G92 E0                  ;zero the extruded length
-G1 F200 E20             ;extrude 3mm of feed stock
-G92 E0                  ;zero the extruded length again
-G0 Z0.5 X175
-G1 F{travel_speed}
-;Put printing message on LCD screen
-M117 Materializando...
+G1  Z200 F10800 ;move the platform down 5mm
+G1  Z50 X150
+G1  Z8  X210
+G1  Z2  X180 E20 F600
+G92 E-5                 ;zero the extruded length again
+G1  Z0.5 X165
 """)
 
 	profile.setAlterationFile('end.gcode', """;Default Moebyus end GCODE for MELTAXL
