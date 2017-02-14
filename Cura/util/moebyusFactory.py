@@ -392,7 +392,7 @@ M117 Terminado!
 ;{profile_string}
 """)
 
-def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
+def setMachineProperties(machineType , filamentSize = 1.75 , nozzleSize = 0.4) :
 	_printer_info = [
 		("One"						, 150, 150, 150, "MoebyusOne"),
 		("Prusa i3 MM"				, 200, 200, 190, "PrusaI3MM" ),
@@ -410,10 +410,12 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		("[SIRIUS] Duplicator"		, 150, 200, 260, "Sirius11-duplication"),
 		("M3"						, 1000,1000,1000, "M3") ]
 
-	profile.putMachineSetting('machine_type'  		, machineType)
-	profile.putProfileSetting('nozzle_size' 		, nozzleSize)
-	profile.putPreference	 ('simpleModeNozzle' 	, nozzleSize)
-	profile.putPreference	 ('simpleModeMaterial'	, "PLA")
+	profile.putMachineSetting('machine_type'  				, machineType)
+	profile.putProfileSetting('nozzle_size' 				, nozzleSize)
+	profile.putPreference	 ('simpleModeNozzle' 			, nozzleSize)
+	profile.putPreference	 ('simpleModeMaterial'			, "PLA")
+	profile.putPreference	 ('simpleModeProfile'			, "Normal")
+	profile.putPreference	 ('simpleModePlatformAdhesion'	, '0')	
 	
 	profile.putProfileSetting('filament_diameter'	, filamentSize)
 	if filamentSize == '3.0' :
@@ -421,7 +423,6 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 	else :
 		profile.putProfileSetting('retraction_speed' 	, 60)
 	profile.putProfileSetting('retraction_amount'	, 3.5)
-
 	profile.putMachineSetting('machine_width' , 199)
 	profile.putMachineSetting('machine_depth' , 199)
 	profile.putMachineSetting('machine_height', 199)
@@ -433,13 +434,13 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 			profile.putMachineSetting('machine_depth' , machineInfo[2])
 			profile.putMachineSetting('machine_height', machineInfo[3])
 
-	profile.putProfileSetting('layer_height'			, float(nozzleSize) / 2)
-	profile.putProfileSetting('bottom_thickness'		, float(nozzleSize) / 2)
-	profile.putProfileSetting('wall_thickness'			, float(nozzleSize) * 2)
-	profile.putProfileSetting('solid_layer_thickness'	, float(profile.getProfileSettingFloat('layer_height')) * 4)
-	profile.putProfileSetting('raft_base_linewidth' 	, float(nozzleSize) * 2 )
-	profile.putProfileSetting('raft_interface_linewidth', float(nozzleSize) * 1.25)
-	profile.putProfileSetting('raft_surface_linewidth' 	, float(nozzleSize) * 1.1 )
+	profile.putProfileSetting('layer_height'			, float(profile.getProfileSettingFloat('nozzle_size')  / 2))
+	profile.putProfileSetting('bottom_thickness'		, float(profile.getProfileSettingFloat('nozzle_size')  / 2))
+	profile.putProfileSetting('wall_thickness'			, float(profile.getProfileSettingFloat('nozzle_size')  * 2))
+	profile.putProfileSetting('solid_layer_thickness'	, float(profile.getProfileSettingFloat('layer_height') * 4))
+	profile.putProfileSetting('raft_base_linewidth' 	, float(profile.getProfileSettingFloat('nozzle_size')  * 2 ))
+	profile.putProfileSetting('raft_interface_linewidth', float(profile.getProfileSettingFloat('nozzle_size')  * 1.25))
+	profile.putProfileSetting('raft_surface_linewidth' 	, float(profile.getProfileSettingFloat('nozzle_size')  * 1.1 ))
 		
 	setAlterations()
 	
@@ -487,7 +488,7 @@ def setMachineProperties(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSiz
 		profile.putMachineSetting('extruder_amount', '1')
 		setAlterationsSiriusDuplicator()
 
-def genProfileForMachine(machineType = "PrusaI3MM", filamentSize = 3 , nozzleSize = 0.4) :
+def genProfileForMachine(machineType , filamentSize, nozzleSize) :
 	print("Gen Profile for:")
 	print(machineType)
 
@@ -571,4 +572,4 @@ def getMachineThumb(machineType = profile.getMachineSetting('machine_type')) :
 		return None		
 
 def resetProfile()  :
-	setMachineProperties(getMachineSetting('machine_type'),getMachineSetting('filament_diameter'),getMachineSetting('nozzle_size'))
+	setMachineProperties(profile.getMachineSetting('machine_type'),profile.getProfileSetting('filament_diameter'),profile.getProfileSetting('nozzle_size'))

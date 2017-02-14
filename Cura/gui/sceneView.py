@@ -624,6 +624,9 @@ class SceneView(openglGui.glGuiPanel):
 	def _onRunEngine(self, e):
 		if self._isSimpleMode:
 			self._engine.runEngine(self._scene, self.GetTopLevelParent().simpleSettingsPanel.getSettingOverrides())
+			print("Updating:")
+			print(self.GetTopLevelParent().simpleSettingsPanel.getSettingOverrides())
+		
 		else:
 			self._engine.runEngine(self._scene)
 

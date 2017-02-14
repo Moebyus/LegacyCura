@@ -557,7 +557,7 @@ class mainWindow(wx.Frame):
 		result = dlg.ShowModal() == wx.ID_YES
 		dlg.Destroy()
 		if result:
-			if isMoebyusMachine() :
+			if moebyusFactory.isMoebyusMachine() :
 				moebyusFactory.resetProfile()
 			else :
 				profile.resetProfile()
