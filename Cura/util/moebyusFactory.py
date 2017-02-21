@@ -71,6 +71,7 @@ G1 X0 Y0 Z5.0 F{travel_speed}
 G92 E0                  ;zero the extruded length
 G1 F300 E25             ;extrude
 G92 E0                  ;zero the extruded length again
+G1 E-4 F1200
 G0 Z0.5 Y20 F1000
 G0 Y50
 G1 F{travel_speed}
@@ -109,11 +110,12 @@ M107                    ;start with the fan off
 G28   
 G29                     ;Run the auto bed leveling
 G1 Z50 F{travel_speed} ;move the platform down 5mm
-G1 X65
+G1 X65 Z8 F6000
 G92 E0                  ;zero the extruded length
 G1 F200 E20             ;extrude 3mm of feed stock
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 X60
+G1 E-8 F1500
+G0 Z0.5 X50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
 M117 Materializando...
@@ -136,10 +138,12 @@ G28
 G92 E0                  ;zero the extruded length
 G1  Z200 F10800 ;move the platform down 5mm
 G1  Z50 X150
-G1  Z8  X210
+G1  Z8  X210 F3000
 G1  Z2  X180 E20 F600
-G92 E-5                 ;zero the extruded length again
-G1  Z0.5 X165
+G92 E0                  ;zero the extruded length again
+G1  E-5 F1500
+G1  Z0.5 X165 F10800
+G1 F{travel_speed}
 """)
 
 	profile.setAlterationFile('end.gcode', """;Default Moebyus end GCODE for MELTAXL
@@ -176,6 +180,7 @@ G92 E0                  ;zero the extruded length
 G1 F300 E25             ;extrude 3mm of feed stock
 G0 Z0.5 Y50 E40 F500
 G92 E0                  ;zero the extruded length again
+G1 E-5 F1500
 G1 F{travel_speed}
 """)
 
@@ -197,12 +202,11 @@ G29                     ;Run the auto bed leveling
 G1 Z5.0 F{travel_speed} ;move the platform down 5mm
 G92 E0                  ;zero the extruded length
 G1 F200 E15             ;extrude 3mm of feed stock
-G0 Z0.5 X10
-G0 X120 E30
+G0 Z0.5 X10 Y2
+G0 F40 X120 E35
 G92 E0                  ;zero the extruded length again
+G1 E-4 F1500
 G1 F{travel_speed}
-;Put printing message on LCD screen
-M117 Materializando...
 """)		
 
 def setAlterationsSirius() :
@@ -218,15 +222,15 @@ G21                     ;metric values
 G90                     ;absolute positioning
 M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
-G28
-G29                     ;Run the auto bed leveling
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
 G1 F300 E25             ;extrude
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 Y20 F1000
+G1 F1200 E-4            ;retract
+G0 Z0.5 Y25 F2000
 G0 Y50
 G1 F{travel_speed}
+
 ;Put printing message on LCD screen
 M117 Materializando...
 """)
@@ -267,17 +271,17 @@ G92 E0                  ;zero the extruded length
 G1 F200 E20             ;extrude 3mm of feed stock
 G92 E0                  ;zero the extruded length again
 G0 Z0.5 Y10
-G1 F400 E-{retraction_dual_amount}
+G1 F1500 E-{retraction_dual_amount}
 G0 Y40
 
 T0                          ;Switch to the first extruder
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F200 E20             ;extrude 3mm of feed stock
+G1 F300 E25             ;extrude
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 Y10
-G0 Y40
-
+G1 F1200 E-4            ;retract
+G0 Z0.5 Y25 F2000
+G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
 M117 Materializando...
@@ -323,9 +327,9 @@ G1 X300 Y0 Z5.0 F{travel_speed}
 G92 E0                  ;zero the extruded length
 G1 F300 E20             ;extrude 3mm of feed stock
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 Y10
-G0 Y40
-
+G1  E-4 F1200
+G0 Z0.5 Y10 F2000
+G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
 M117 Materializando...
@@ -366,11 +370,13 @@ G21                     ;metric values
 G90                     ;absolute positioning
 M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
-G1 Z5.0 F{travel_speed} ;move the platform down 5mm
+G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F200 E20             ;extrude 3mm of feed stock
+G1 F300 E25             ;extrude
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 Y5
+G1 F1200 E-4            ;retract
+G0 Z0.5 Y25 F2000
+G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
 M117 Materializando...
