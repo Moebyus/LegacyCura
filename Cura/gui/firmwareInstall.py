@@ -96,15 +96,17 @@ class InstallFirmware(wx.Dialog):
 			firmSelectW = moebyusGui.moebyusFirmwareSelector()
 			print('Opening firmware selector')
 			result = firmSelectW.ShowModal() == wx.ID_OK
+			print("Selected:")
+			print(firmSelectW.getFilename())
 			filename = resources.getPathForFirmware(firmSelectW.getFilename())
 			firmSelectW.Destroy()
+			print("Filename:")
+			print(filename)
 			if not result or filename == '' or filename == None :
 				self.Destroy()
-				print('Incorrect selection')
+				print('Not Found!')
 				return
-			print('Selection finished:')				
-			print(filename)
-
+			
 		sizer = wx.BoxSizer(wx.VERTICAL)
 
 		self.progressLabel = wx.StaticText(self, -1, 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\nX\nX')

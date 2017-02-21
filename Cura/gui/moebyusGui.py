@@ -131,7 +131,6 @@ class MoebyusInfoPage(wx.wizard.WizardPageSimple):
 		pass
 
 
-
 class moebyusFirmwareSelector(wx.Dialog) :
 	def __init__(self, parent = None)  :
 		super(moebyusFirmwareSelector, self).__init__(parent=parent, title="Moebyus Machines Firmware loader", size=(800, 600))
@@ -144,8 +143,6 @@ class moebyusFirmwareSelector(wx.Dialog) :
 		self.rowNr = 0
 		
 		
-		
-		self.firmwareFile = ''
 		self.machineSelection = []
 		self.lcdSelection = []		
 		self.machines = [
@@ -160,7 +157,8 @@ class moebyusFirmwareSelector(wx.Dialog) :
 
 		self.lcds = [ ('LCD Full Graphic'  , 'lcdFull') ,
 					  ('LCD Smart Discount', 'lcdSmart') ]
-
+		self.machineType = self.machines[0][1]
+		self.lcdType     = self.lcds[0][1]
 
 		title = wx.StaticText(self, -1, 'Select Machine Type')
 		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
@@ -225,8 +223,6 @@ class moebyusFirmwareSelector(wx.Dialog) :
 		self.rowNr += 1
 
 
-
-
 		button_sizer = wx.BoxSizer(wx.HORIZONTAL)
 		okButton = wx.Button(self, wx.ID_OK	 , "Install Firmware")
 		button_sizer.Add(okButton,0,wx.ALL,10)
@@ -236,19 +232,20 @@ class moebyusFirmwareSelector(wx.Dialog) :
 
 
 	def getFilename(self)  :
-		return self.firmwareFile
+		return self.machineType + "-" + self.lcdType + ".hex"
 
 	def onLcdSelect(self,e) :
 		for selected in self.lcdSelection :
 			if selected.GetValue():
-				print(selected.GetLabel())
+				values = selected.data
+				self.lcdType = values[0]
 			
 	def OnMachineSelect(self, e):
 		for selected in self.machineSelection :
 			if selected.GetValue():
-				print(selected.GetLabel())
 				values = selected.data
 				self.previewBitmap.SetBitmap(wx.Bitmap(resources.getPathForImage(moebyusFactory.getMachineThumb(values[0]))))
+				self.machineType = values[0]
 		
 		
 class MoebyusSelectModelPage(MoebyusInfoPage):
