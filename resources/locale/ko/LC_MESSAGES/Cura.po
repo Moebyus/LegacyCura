@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cura Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-19 00:04+0100\n"
+"POT-Creation-Date: 2017-01-22 04:34+0100\n"
 "PO-Revision-Date: 2015-01-07 17:30+0900\n"
 "Last-Translator: Jinbuhm Kim <Jinbuhm.Kim@gmail.com>\n"
 "Language-Team: Korean <Jinbuhm.Kim@gmail.com>\n"
@@ -357,18 +357,18 @@ msgstr "기기 제거 오류"
 msgid "Enter the new name:"
 msgstr "새로운 이름을 입력:"
 
-#: Cura/gui/firmwareInstall.py:80
+#: Cura/gui/firmwareInstall.py:87
 msgid ""
 "I am sorry, but Cura does not ship with a default firmware for your machine "
 "configuration."
 msgstr "죄송합니다, 큐라는 이 기기의 설정을 위한 기본 펌웨어가 없습니다."
 
-#: Cura/gui/firmwareInstall.py:80 Cura/gui/firmwareInstall.py:85
-#: Cura/gui/firmwareInstall.py:141 Cura/gui/mainWindow.py:586
+#: Cura/gui/firmwareInstall.py:87 Cura/gui/firmwareInstall.py:92
+#: Cura/gui/firmwareInstall.py:162 Cura/gui/mainWindow.py:592
 msgid "Firmware update"
 msgstr "펌웨어 업데이트 "
 
-#: Cura/gui/firmwareInstall.py:85
+#: Cura/gui/firmwareInstall.py:92
 msgid ""
 "Cura only supports firmware updates for ATMega2560 based hardware.\n"
 "So updating your RepRap with Cura might or might not work."
@@ -376,19 +376,19 @@ msgstr ""
 "큐라는 ATMega2560기반의 하드웨어의 펌웨어 업데이트만 지원합니다. \n"
 "따라서 RepRap기반의 기기는 동작을 하지 않을 수도 있습니다."
 
-#: Cura/gui/firmwareInstall.py:93 Cura/gui/firmwareInstall.py:211
+#: Cura/gui/firmwareInstall.py:114 Cura/gui/firmwareInstall.py:232
 msgid "OK"
 msgstr "확인"
 
-#: Cura/gui/firmwareInstall.py:115 Cura/gui/firmwareInstall.py:295
+#: Cura/gui/firmwareInstall.py:136 Cura/gui/firmwareInstall.py:316
 msgid "Reading firmware..."
 msgstr "펌웨어 읽기..."
 
-#: Cura/gui/firmwareInstall.py:117 Cura/gui/firmwareInstall.py:297
+#: Cura/gui/firmwareInstall.py:138 Cura/gui/firmwareInstall.py:318
 msgid "Connecting to machine..."
 msgstr "기기에 접속중..."
 
-#: Cura/gui/firmwareInstall.py:121 Cura/gui/firmwareInstall.py:301
+#: Cura/gui/firmwareInstall.py:142 Cura/gui/firmwareInstall.py:322
 msgid ""
 "Please connect the printer to\n"
 "your computer with the USB cable."
@@ -396,7 +396,7 @@ msgstr ""
 "USB 케이블로 프린터와\n"
 " 컴퓨터를 연결하시오."
 
-#: Cura/gui/firmwareInstall.py:140
+#: Cura/gui/firmwareInstall.py:161
 msgid ""
 "Failed to find machine for firmware upgrade\n"
 "Is your machine connected to the PC?"
@@ -404,7 +404,7 @@ msgstr ""
 "펌웨어 업데이트를 위한 기기를 찾는데 실패\n"
 "기기가 PC에 연결이 되어 있나요?"
 
-#: Cura/gui/firmwareInstall.py:148
+#: Cura/gui/firmwareInstall.py:169
 msgid ""
 "Failed to install firmware:\n"
 "This firmware is not compatible with this machine.\n"
@@ -414,7 +414,7 @@ msgstr ""
 "이 펌웨어는 이 기기와 맞지 않습니다.\n"
 "UM2나 UMO+에 UMO 펌웨어를 인스톨 했나요?"
 
-#: Cura/gui/firmwareInstall.py:154
+#: Cura/gui/firmwareInstall.py:175
 msgid ""
 "Failed to install firmware:\n"
 "This firmware is not compatible with this machine.\n"
@@ -424,11 +424,11 @@ msgstr ""
 "이 펌웨어는 이 기기와 맞지 않습니다.\n"
 "UMO에 UM2나 UMO+ 펌웨어를 인스톨 했나요?"
 
-#: Cura/gui/firmwareInstall.py:159 Cura/gui/firmwareInstall.py:323
+#: Cura/gui/firmwareInstall.py:180 Cura/gui/firmwareInstall.py:344
 msgid "Uploading firmware..."
 msgstr "펌웨어 업로딩 중..."
 
-#: Cura/gui/firmwareInstall.py:162 Cura/gui/firmwareInstall.py:326
+#: Cura/gui/firmwareInstall.py:183 Cura/gui/firmwareInstall.py:347
 #, python-format
 msgid ""
 "Done!\n"
@@ -437,7 +437,7 @@ msgstr ""
 "완료!\n"
 "설치된 펌웨어:%s"
 
-#: Cura/gui/firmwareInstall.py:170
+#: Cura/gui/firmwareInstall.py:191
 #, python-format
 msgid ""
 "Failed to write firmware: %s\n"
@@ -445,169 +445,173 @@ msgid ""
 "%s"
 msgstr ""
 
-#: Cura/gui/firmwareInstall.py:171
+#: Cura/gui/firmwareInstall.py:192
 msgid "Close, open support page"
 msgstr ""
 
-#: Cura/gui/firmwareInstall.py:320
+#: Cura/gui/firmwareInstall.py:341
 msgid "Failed to connect to programmer.\n"
 msgstr "프로그래머 접속 실패.\n"
 
-#: Cura/gui/firmwareInstall.py:328
+#: Cura/gui/firmwareInstall.py:349
 msgid "Failed to write firmware.\n"
 msgstr "펌웨어 쓰기 실패.\n"
 
-#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:657
+#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:663
 msgid "A new version of Cura is available, would you like to download?"
 msgstr "새로운 버젼의 큐라가 있습니다. 다운로드하시겠습니까?"
 
-#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:657
+#: Cura/gui/app.py:146 Cura/gui/mainWindow.py:663
 msgid "New version available"
 msgstr "새로운 버젼이 있습니다."
 
-#: Cura/gui/mainWindow.py:72
+#: Cura/gui/mainWindow.py:74
 msgid "Load model file...\tCTRL+L"
 msgstr "모델 파일 읽어오기...\tCTRL+L"
 
-#: Cura/gui/mainWindow.py:74
+#: Cura/gui/mainWindow.py:76
 msgid "Save model...\tCTRL+S"
 msgstr "모델 저장하기...\tCTRL+S"
 
-#: Cura/gui/mainWindow.py:76
+#: Cura/gui/mainWindow.py:78
 msgid "Reload platform\tF5"
 msgstr "플랫폼 새로고침\tF5"
 
-#: Cura/gui/mainWindow.py:78
+#: Cura/gui/mainWindow.py:80
 #, fuzzy
 msgid "Clear platform\tCTRL+D"
 msgstr "플랫폼 지우기"
 
-#: Cura/gui/mainWindow.py:82
+#: Cura/gui/mainWindow.py:84
 msgid "Print...\tCTRL+P"
 msgstr "프린트...\tCTRL+P"
 
-#: Cura/gui/mainWindow.py:84
+#: Cura/gui/mainWindow.py:86
 #, fuzzy
 msgid "Save GCode...\tCTRL+G"
 msgstr "모델 저장하기...\tCTRL+S"
 
-#: Cura/gui/mainWindow.py:86
+#: Cura/gui/mainWindow.py:88
 msgid "Show slice engine log..."
 msgstr "슬라이스 엔진의 로그 보기..."
 
-#: Cura/gui/mainWindow.py:90
+#: Cura/gui/mainWindow.py:92
 msgid "Open Profile..."
 msgstr "프로파일 열기..."
 
-#: Cura/gui/mainWindow.py:93
+#: Cura/gui/mainWindow.py:95
 msgid "Save Profile..."
 msgstr "프로파일 저장하기..."
 
-#: Cura/gui/mainWindow.py:100
+#: Cura/gui/mainWindow.py:102
 msgid "Load Profile from GCode..."
 msgstr "GCode로 부터 프로파일 가져오기..."
 
-#: Cura/gui/mainWindow.py:111
+#: Cura/gui/mainWindow.py:109
+msgid "Reset Profile to default"
+msgstr "프로파일을 기본설정으로 리셋"
+
+#: Cura/gui/mainWindow.py:114
 msgid "Preferences...\tCTRL+,"
 msgstr "환경설정...\tCTRL+,"
 
-#: Cura/gui/mainWindow.py:113 Cura/gui/mainWindow.py:489
+#: Cura/gui/mainWindow.py:116 Cura/gui/mainWindow.py:492
 msgid "Machine settings..."
 msgstr "기기설정..."
 
-#: Cura/gui/mainWindow.py:119
+#: Cura/gui/mainWindow.py:122
 msgid "Recent Model Files"
 msgstr "최근에 사용한 모델 파일"
 
-#: Cura/gui/mainWindow.py:126
+#: Cura/gui/mainWindow.py:129
 msgid "Recent Profile Files"
 msgstr "최근에 사용한 프로파일 파일"
 
-#: Cura/gui/mainWindow.py:132
+#: Cura/gui/mainWindow.py:135
 msgid "Quit"
 msgstr "종료하기"
 
-#: Cura/gui/mainWindow.py:134
+#: Cura/gui/mainWindow.py:137
 msgid "File"
 msgstr "파일 "
 
-#: Cura/gui/mainWindow.py:142
+#: Cura/gui/mainWindow.py:145
 msgid "Minecraft map import..."
 msgstr "마인크래프트 맵 가져오기..."
 
-#: Cura/gui/mainWindow.py:146
+#: Cura/gui/mainWindow.py:149
 msgid "PID Debugger..."
 msgstr "PID 디버거..."
 
-#: Cura/gui/mainWindow.py:148
+#: Cura/gui/mainWindow.py:151
 msgid "Auto Firmware Update..."
 msgstr "자동 펌웨어 업데이트..."
 
-#: Cura/gui/mainWindow.py:155
+#: Cura/gui/mainWindow.py:158
 msgid "Print all at once"
 msgstr "한번에 모두 프린트하기"
 
-#: Cura/gui/mainWindow.py:157
+#: Cura/gui/mainWindow.py:160
 msgid "Print one at a time"
 msgstr "한번에 하나씩 프린트하기"
 
-#: Cura/gui/mainWindow.py:164
+#: Cura/gui/mainWindow.py:167
 msgid "Tools"
 msgstr "툴"
 
-#: Cura/gui/mainWindow.py:170 Cura/util/profile.py:202
+#: Cura/gui/mainWindow.py:173 Cura/util/profile.py:202
 msgid "Machine"
 msgstr "기기 "
 
-#: Cura/gui/mainWindow.py:173
+#: Cura/gui/mainWindow.py:176
 msgid "Switch to quickprint..."
 msgstr "빠른 프린터 설정으로 전환..."
 
-#: Cura/gui/mainWindow.py:177
+#: Cura/gui/mainWindow.py:180
 msgid "Switch to full settings..."
 msgstr "자세한 설정으로 전환..."
 
-#: Cura/gui/mainWindow.py:182
+#: Cura/gui/mainWindow.py:185
 msgid "Open expert settings...\tCTRL+E"
 msgstr "전문가 설정 열기...\tCTRL+E"
 
-#: Cura/gui/mainWindow.py:186
+#: Cura/gui/mainWindow.py:189
 msgid "Run bed leveling wizard..."
 msgstr "베드 수평맞추기 마법사 실행..."
 
-#: Cura/gui/mainWindow.py:188
+#: Cura/gui/mainWindow.py:191
 msgid "Run head offset wizard..."
 msgstr "헤드 옵셋 마법사 실행..."
 
-#: Cura/gui/mainWindow.py:191
+#: Cura/gui/mainWindow.py:194
 msgid "Expert"
 msgstr "전문가 설정 "
 
-#: Cura/gui/mainWindow.py:194
+#: Cura/gui/mainWindow.py:197
 msgid "Online documentation..."
 msgstr "온라인 문서..."
 
-#: Cura/gui/mainWindow.py:196
+#: Cura/gui/mainWindow.py:199
 msgid "Report a problem..."
 msgstr "문제 리포트하기..."
 
-#: Cura/gui/mainWindow.py:198
+#: Cura/gui/mainWindow.py:201
 msgid "Check for update..."
 msgstr "업데이트 확인..."
 
-#: Cura/gui/mainWindow.py:200
+#: Cura/gui/mainWindow.py:203
 msgid "Open YouMagine website..."
 msgstr "Yoymagine 웹사이트 열기..."
 
-#: Cura/gui/mainWindow.py:202
+#: Cura/gui/mainWindow.py:205
 msgid "About Cura..."
 msgstr "큐라에 관하여..."
 
-#: Cura/gui/mainWindow.py:204
+#: Cura/gui/mainWindow.py:207
 msgid "Help"
 msgstr "도움말"
 
-#: Cura/gui/mainWindow.py:399
+#: Cura/gui/mainWindow.py:402
 msgid ""
 "For \"One at a time\" printing, you need to have entered the correct head "
 "size and gantry height in the machine settings"
@@ -615,31 +619,31 @@ msgstr ""
 "\"한번에 하나씩\" 프린팅의 경우, 기기 설정에서 정확한 헤드 사이즈와 갠트리의 "
 "높이를 입력해야 합니다."
 
-#: Cura/gui/mainWindow.py:399
+#: Cura/gui/mainWindow.py:402
 msgid "One at a time warning"
 msgstr "한번에 하나씩 프린팅 경고"
 
-#: Cura/gui/mainWindow.py:487
+#: Cura/gui/mainWindow.py:490
 msgid "Add new machine..."
 msgstr "새로운 기기 추가..."
 
-#: Cura/gui/mainWindow.py:495
+#: Cura/gui/mainWindow.py:498
 msgid "Install default firmware..."
 msgstr "기본 펌웨어 설치..."
 
-#: Cura/gui/mainWindow.py:498
+#: Cura/gui/mainWindow.py:501
 msgid "Install custom firmware..."
 msgstr "사용자 정의 펌웨어 설치..."
 
-#: Cura/gui/mainWindow.py:502
+#: Cura/gui/mainWindow.py:505
 msgid "Select profile file to load"
 msgstr "로드할 프로파일 파일 선택"
 
-#: Cura/gui/mainWindow.py:514
+#: Cura/gui/mainWindow.py:517
 msgid "Select gcode file to load profile from"
 msgstr "프로파일을 로드하기위해 gcode파일 선택"
 
-#: Cura/gui/mainWindow.py:529
+#: Cura/gui/mainWindow.py:532
 msgid ""
 "No profile found in GCode file.\n"
 "This feature only works with GCode files made by Cura 12.07 or newer."
@@ -647,15 +651,15 @@ msgstr ""
 "GCode 파일에 프로파일 파일이 없음.\n"
 "이 기능은 큐라 12.07이상에서 만들어진 GCode files만 동작합니다."
 
-#: Cura/gui/mainWindow.py:529
+#: Cura/gui/mainWindow.py:532
 msgid "Profile load error"
 msgstr "프로파일 로드 에러"
 
-#: Cura/gui/mainWindow.py:533 Cura/gui/mainWindow.py:543
+#: Cura/gui/mainWindow.py:536 Cura/gui/mainWindow.py:546
 msgid "Select profile file to save"
 msgstr "저장할 프로파일 파일 선택"
 
-#: Cura/gui/mainWindow.py:553
+#: Cura/gui/mainWindow.py:556
 msgid ""
 "This will reset all profile settings to defaults.\n"
 "Unless you have saved your current profile, all settings will be lost!\n"
@@ -665,22 +669,22 @@ msgstr ""
 "현재 프로파일을 저장하지 않으면 모든 설정은 사라집니다 !\n"
 "정말 리셋하기를 원하십니까?"
 
-#: Cura/gui/mainWindow.py:553
+#: Cura/gui/mainWindow.py:556
 msgid "Profile reset"
 msgstr "프로파일 리셋"
 
-#: Cura/gui/mainWindow.py:566
+#: Cura/gui/mainWindow.py:572
 msgid ""
 "Copy the settings from quickprint to your full settings?\n"
 "(This will overwrite any full setting modifications you have)"
 msgstr ""
 
-#: Cura/gui/mainWindow.py:566
+#: Cura/gui/mainWindow.py:572
 #, fuzzy
 msgid "Profile copy"
 msgstr "프로파일 리셋"
 
-#: Cura/gui/mainWindow.py:586
+#: Cura/gui/mainWindow.py:592
 msgid ""
 "Warning: Installing a custom firmware does not guarantee that you machine "
 "will function correctly, and could damage your machine."
@@ -688,27 +692,27 @@ msgstr ""
 "경고: 사용자 정의 펌웨어의 설치는 정상적인 동작을 보장하지 않으며 기기에 손상"
 "을 줄 수 있습니다."
 
-#: Cura/gui/mainWindow.py:587 Cura/gui/mainWindow.py:630
+#: Cura/gui/mainWindow.py:593 Cura/gui/mainWindow.py:636
 msgid "Open firmware to upload"
 msgstr "업로드할 펌웨어 열기"
 
-#: Cura/gui/mainWindow.py:660
+#: Cura/gui/mainWindow.py:666
 msgid "You are running the latest version of Cura!"
 msgstr "최신 버젼의 큐라를 사용하고 있습니다 !"
 
-#: Cura/gui/mainWindow.py:660
+#: Cura/gui/mainWindow.py:666
 msgid "Awesome!"
 msgstr "좋습니다!"
 
-#: Cura/gui/mainWindow.py:705
+#: Cura/gui/mainWindow.py:711
 msgid "Basic"
 msgstr "기본"
 
-#: Cura/gui/mainWindow.py:709
+#: Cura/gui/mainWindow.py:715
 msgid "Advanced"
 msgstr "고급"
 
-#: Cura/gui/mainWindow.py:715
+#: Cura/gui/mainWindow.py:721
 msgid "Plugins"
 msgstr "플러그인"
 
@@ -1013,8 +1017,8 @@ msgstr "엔드스탑:"
 msgid "Show error log"
 msgstr "에러 기록 보기"
 
-#: Cura/gui/configWizard.py:664 Cura/gui/configWizard.py:1243
-#: Cura/gui/configWizard.py:1462
+#: Cura/gui/configWizard.py:664 Cura/gui/configWizard.py:1242
+#: Cura/gui/configWizard.py:1461
 msgid "Connecting to machine."
 msgstr "기기에 연결합니다."
 
@@ -1044,8 +1048,8 @@ msgstr "헤드 온도:%d"
 msgid "Communication State: %s"
 msgstr "통신 상태:%s"
 
-#: Cura/gui/configWizard.py:737 Cura/gui/configWizard.py:1420
-#: Cura/gui/configWizard.py:1638
+#: Cura/gui/configWizard.py:737 Cura/gui/configWizard.py:1419
+#: Cura/gui/configWizard.py:1637
 msgid "Failed to establish connection with the printer."
 msgstr "프린터와 연결 실패."
 
@@ -1185,83 +1189,83 @@ msgstr "어떤 기기를 가지고 있나요:"
 msgid "Configuration Wizard"
 msgstr "설정 마법사"
 
-#: Cura/gui/configWizard.py:1203 Cura/gui/configWizard.py:1651
+#: Cura/gui/configWizard.py:1202 Cura/gui/configWizard.py:1650
 msgid "Bed leveling wizard"
 msgstr "베드 레벨링 마법사"
 
-#: Cura/gui/configWizard.py:1205
+#: Cura/gui/configWizard.py:1204
 msgid "This wizard will help you in leveling your printer bed"
 msgstr "마법사가 프린터 베드의 레벨링을 도와줄 것입니다."
 
-#: Cura/gui/configWizard.py:1207
+#: Cura/gui/configWizard.py:1206
 msgid "It will do the following steps"
 msgstr "다음의 절차가 진행됩니다"
 
-#: Cura/gui/configWizard.py:1208
+#: Cura/gui/configWizard.py:1207
 msgid "* Move the printer head to each corner"
 msgstr "* 프린터 헤드를 각 코너로 이동"
 
-#: Cura/gui/configWizard.py:1209
+#: Cura/gui/configWizard.py:1208
 msgid "  and let you adjust the height of the bed to the nozzle"
 msgstr "베드의 높이를 조절"
 
-#: Cura/gui/configWizard.py:1210
+#: Cura/gui/configWizard.py:1209
 msgid "* Print a line around the bed to check if it is level"
 msgstr "* 레벨이 맞는지 베드 주변으로 라인을 출력"
 
-#: Cura/gui/configWizard.py:1213 Cura/gui/configWizard.py:1438
+#: Cura/gui/configWizard.py:1212 Cura/gui/configWizard.py:1437
 msgid "Connect to printer"
 msgstr "기기에 연결합니다"
 
-#: Cura/gui/configWizard.py:1217 Cura/gui/configWizard.py:1444
+#: Cura/gui/configWizard.py:1216 Cura/gui/configWizard.py:1443
 msgid "Resume"
 msgstr "재가동"
 
-#: Cura/gui/configWizard.py:1218
+#: Cura/gui/configWizard.py:1217
 msgid "Up 0.2mm"
 msgstr "위로 0.2mm"
 
-#: Cura/gui/configWizard.py:1218
+#: Cura/gui/configWizard.py:1217
 msgid "Down 0.2mm"
 msgstr "아래로 0.2mm"
 
-#: Cura/gui/configWizard.py:1219
+#: Cura/gui/configWizard.py:1218
 msgid "Up 10mm"
 msgstr "위로 10mm"
 
-#: Cura/gui/configWizard.py:1219
+#: Cura/gui/configWizard.py:1218
 msgid "Down 10mm"
 msgstr "아래로 0.2mm"
 
-#: Cura/gui/configWizard.py:1279
+#: Cura/gui/configWizard.py:1278
 msgid "Homing printer..."
 msgstr "프린터의 홈위치로..."
 
-#: Cura/gui/configWizard.py:1289
+#: Cura/gui/configWizard.py:1288
 msgid "Moving head to back center..."
 msgstr "헤드를 뒷면 중심으로 이동..."
 
-#: Cura/gui/configWizard.py:1296
+#: Cura/gui/configWizard.py:1295
 msgid "Moving head to back left corner..."
 msgstr "헤드를 뒷면 좌측 코너로 이동..."
 
-#: Cura/gui/configWizard.py:1304 Cura/gui/configWizard.py:1318
+#: Cura/gui/configWizard.py:1303 Cura/gui/configWizard.py:1317
 msgid "Moving head to front right corner..."
 msgstr "헤드를 앞면 우측 코너로 이동..."
 
-#: Cura/gui/configWizard.py:1311
+#: Cura/gui/configWizard.py:1310
 msgid "Moving head to back right corner..."
 msgstr "헤드를 뒷면 우측 코너로 이동..."
 
-#: Cura/gui/configWizard.py:1325
+#: Cura/gui/configWizard.py:1324
 msgid "Heating up printer..."
 msgstr "프린터 가열중..."
 
-#: Cura/gui/configWizard.py:1332
+#: Cura/gui/configWizard.py:1331
 msgid "Printing a square on the printer bed at 0.3mm height."
 msgstr "프린터베드에 0.3mm 높이로 정사각형 출력"
 
-#: Cura/gui/configWizard.py:1372
+#: Cura/gui/configWizard.py:1371
 msgid ""
 "Adjust the front left screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1269,7 +1273,7 @@ msgstr ""
 "노즐이 베드에 닿도록\n"
 "프린터 베드의 앞쪽 왼쪽 나사를 조절하세요."
 
-#: Cura/gui/configWizard.py:1377
+#: Cura/gui/configWizard.py:1376
 msgid ""
 "Adjust the back screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1277,7 +1281,7 @@ msgstr ""
 "노즐이 베드에 닿도록\n"
 "프린터 베드의 뒤쪽 나사를 조절하세요."
 
-#: Cura/gui/configWizard.py:1379
+#: Cura/gui/configWizard.py:1378
 msgid ""
 "Adjust the back left screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1285,7 +1289,7 @@ msgstr ""
 "노즐이 베드에 닿도록\n"
 "프린터베드의 뒤쪽 왼쪽 나사를 조절하세요."
 
-#: Cura/gui/configWizard.py:1383
+#: Cura/gui/configWizard.py:1382
 msgid ""
 "Adjust the back right screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1293,7 +1297,7 @@ msgstr ""
 "노즐이 베드에 닿도록\n"
 "프린터베드의 뒤쪽 오른쪽 나사를 조절하세요."
 
-#: Cura/gui/configWizard.py:1387
+#: Cura/gui/configWizard.py:1386
 msgid ""
 "Adjust the front right screw of your printer bed\n"
 "So the nozzle just hits the bed."
@@ -1301,21 +1305,21 @@ msgstr ""
 "노즐이 베드에 닿도록\n"
 "프린터베드의 앞쪽 오른쪽 나사를 조절하세요."
 
-#: Cura/gui/configWizard.py:1391
+#: Cura/gui/configWizard.py:1390
 #, python-format
 msgid "Heating up printer: %d/%d"
 msgstr "프린터 가열: %d/%d"
 
-#: Cura/gui/configWizard.py:1393
+#: Cura/gui/configWizard.py:1392
 msgid ""
 "The printer is hot now. Please insert some PLA filament into the printer."
 msgstr "현재 프린터가 뜨겁습니다. 프린터에 PLA 필라멘트를 넣으세요."
 
-#: Cura/gui/configWizard.py:1402
+#: Cura/gui/configWizard.py:1401
 msgid "Use the up/down buttons to move the bed and adjust your Z endstop."
 msgstr "위/아래로 조정하는 버튼으로 베드를 움직여서 Z축 엔드스탑을 조정하세요."
 
-#: Cura/gui/configWizard.py:1414
+#: Cura/gui/configWizard.py:1413
 msgid ""
 "Calibration finished.\n"
 "The squares on the bed should slightly touch each other."
@@ -1323,99 +1327,95 @@ msgstr ""
 "캘리브레이션이 끝났습니다.\n"
 "베드위의 정사각형은 베드와 살짝 닿아야 합니다."
 
-#: Cura/gui/configWizard.py:1435
+#: Cura/gui/configWizard.py:1434
 msgid ""
 "This wizard will help you in calibrating the printer head offsets of your "
 "dual extrusion machine"
 msgstr "마법사가 프린터 헤드 옵셋의 조정을 도와줄 것입니다."
 
-#: Cura/gui/configWizard.py:1468
+#: Cura/gui/configWizard.py:1467
 msgid "Printing initial calibration cross"
 msgstr "캘리브레이션을 위한 십자 출력"
 
-#: Cura/gui/configWizard.py:1516
+#: Cura/gui/configWizard.py:1515
 msgid ""
 "Please measure the distance between the horizontal lines in millimeters."
 msgstr "수평선사이의 라인 간격을 밀리미터 단위로 측정하세요."
 
-#: Cura/gui/configWizard.py:1526
+#: Cura/gui/configWizard.py:1525
 msgid "Printing the fine calibration lines."
 msgstr "캘리브레이션 라인 출력."
 
-#: Cura/gui/configWizard.py:1581
+#: Cura/gui/configWizard.py:1580
 msgid ""
 "Which horizontal line number lays perfect on top of each other? Front most "
 "line is zero."
 msgstr "어떤 수평 라인이 가장 위에 위치합니까? 맨 앞의 라인이 0입니다."
 
-#: Cura/gui/configWizard.py:1592
+#: Cura/gui/configWizard.py:1591
 #, python-format
 msgid "Calibration finished. Offsets are: %s %s"
 msgstr "캘리브레이션이 끝났습니다. 오프셋은: %s %s"
 
-#: Cura/gui/configWizard.py:1605
+#: Cura/gui/configWizard.py:1604
 msgid "Please load both extruders with PLA."
 msgstr "양쪽 익스투루더에 PLA를 넣으세요."
 
-#: Cura/gui/configWizard.py:1614
+#: Cura/gui/configWizard.py:1613
 msgid "Homing printer and heating up both extruders."
 msgstr "프린터를 홈 위치로 보내고 양쪽 익스투루더를 가열합니다."
 
-#: Cura/gui/configWizard.py:1624
+#: Cura/gui/configWizard.py:1623
 msgid "Please measure the distance between the vertical lines in millimeters."
 msgstr "수직 라인간의 거리를 밀리미터 단위로 측정합니다."
 
-#: Cura/gui/configWizard.py:1631
+#: Cura/gui/configWizard.py:1630
 msgid ""
 "Which vertical line number lays perfect on top of each other? Leftmost line "
 "is zero."
 msgstr "어떤 수직 라인이 가장 위에 위치합니까? 맨 왼쪽의 라인이 0입니다."
 
-#: Cura/gui/configWizard.py:1680
+#: Cura/gui/configWizard.py:1679
 msgid "Head offset wizard"
 msgstr "헤드 옵셋 마법사"
 
-#: Cura/gui/moebyusGui.py:145
-msgid "Moebyus Firmware"
-msgstr ""
-
-#: Cura/gui/moebyusGui.py:176
+#: Cura/gui/moebyusGui.py:208
 #, fuzzy
 msgid "Moebyus Machines"
 msgstr "기기 "
 
-#: Cura/gui/moebyusGui.py:192
+#: Cura/gui/moebyusGui.py:224
 msgid "Select Model:"
 msgstr ""
 
-#: Cura/gui/moebyusGui.py:299
+#: Cura/gui/moebyusGui.py:331
 #, fuzzy
 msgid "Cura is now ready!"
 msgstr "큐라를 사용할 준비가 되었습니다!"
 
-#: Cura/gui/moebyusGui.py:301
+#: Cura/gui/moebyusGui.py:333
 msgid "Thanks for installing our software, now you're ready to print"
 msgstr ""
 
-#: Cura/gui/moebyusGui.py:304
+#: Cura/gui/moebyusGui.py:336
 #, fuzzy
 msgid "You can find the latest version of this software at: "
 msgstr "최신 버젼의 큐라를 사용하고 있습니다 !"
 
-#: Cura/gui/moebyusGui.py:305
+#: Cura/gui/moebyusGui.py:337
 msgid "https://github.com/moebyus/cura/releases"
 msgstr ""
 
-#: Cura/gui/moebyusGui.py:307
+#: Cura/gui/moebyusGui.py:339
 msgid ""
 "Also you can find and Download all the files regarding your machine at: "
 msgstr ""
 
-#: Cura/gui/moebyusGui.py:308
+#: Cura/gui/moebyusGui.py:340
 msgid "https://github.com/moebyus"
 msgstr ""
 
-#: Cura/gui/moebyusGui.py:311
+#: Cura/gui/moebyusGui.py:343
 msgid "May the Force be with you..."
 msgstr ""
 
@@ -3189,9 +3189,6 @@ msgstr "%0.2f 미터 %0.0f 그램"
 
 #~ msgid "Other (Ex: RepRap, MakerBot, Witbox)"
 #~ msgstr "그 외(예: RepRap, MakerBot, Witbox)"
-
-#~ msgid "Reset Profile to default"
-#~ msgstr "프로파일을 기본설정으로 리셋"
 
 #~ msgid "Select a quickprint profile:"
 #~ msgstr "퀵프린트 프로파일 선택:"

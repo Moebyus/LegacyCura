@@ -25,7 +25,7 @@ class ProfileInfo(object):
 			self.material = cp.get('info', 'material')
 		if cp.has_option('info', 'nozzle_size'):
 			self.nozzle_size = cp.get('info', 'nozzle_size')
-		if cp.has_option('info', 'nozzle_size'):
+		if cp.has_option('info', 'order'):
 			self.order = int(cp.get('info', 'order'))
 
 class ProfileManager(object):
@@ -80,6 +80,10 @@ class ProfileManager(object):
 		settings = {}
 
 		current_profile = self._getProfileFor(profile_name, material_name, nozzle_size)
+		
+		print("retrieved profile:")
+		print(current_profile)
+		
 		cp = configparser.ConfigParser()
 		cp.read(current_profile.filename)
 		for setting in profile.settingsList:
@@ -100,11 +104,22 @@ class ProfileManager(object):
 		return settings
 
 	def _getProfileFor(self, profile_name, material_name, nozzle_size):
+		print("getProfileFor:")
+		print(profile_name)
+		print(material_name)
+		print(nozzle_size)
+		
 		if self._material_in_print_profile:
+			print("Material in profile")
 			for profile in self._print_profiles:
 				if profile.name == profile_name and profile.material == material_name and nozzle_size == profile.nozzle_size:
+					print("Match profile: ")
+					print(profile.name)
+					print(profile.material)
+					print(profile.nozzle_size)					
 					return profile
 		else:
+			print("Material NOT in profile")
 			for profile in self._print_profiles:
 				if profile.name == profile_name and nozzle_size == profile.nozzle_size:
 					return profile
@@ -129,7 +144,10 @@ class simpleModePanel(wx.Panel):
 			button = wx.RadioButton(printNozzlePanel, -1, name, style=wx.RB_GROUP if len(self._print_nozzle_options) == 0 else 0)
 			button.name = nozzle_size
 			self._print_nozzle_options.append(button)
+			print(nozzle_size)
 			if profile.getPreference('simpleModeNozzle') == nozzle_size:
+				print(profile.getPreference('simpleModeNozzle'))
+				print(nozzle_size)
 				button.SetValue(True)
 
 		printMaterialPanel = wx.Panel(self)
@@ -216,7 +234,7 @@ class simpleModePanel(wx.Panel):
 		if profile_name is None:
 			self._print_profile_options[1].SetValue(True)
 			profile_name = self._getActiveProfileName()
-
+			
 		if material_name is None:
 			if len(self._print_material_options) > 0:
 				self._print_material_options[0].SetValue(True)
@@ -229,11 +247,11 @@ class simpleModePanel(wx.Panel):
 				nozzle_name = self._getActiveNozzleSizeName()
 			else:
 				nozzle_name = ''
-
-		profile.putPreference('simpleModeProfile', profile_name)
-		profile.putPreference('simpleModeMaterial', material_name)
-		profile.putPreference('simpleModeNozzle', nozzle_name)
-		profile.putPreference('simpleModePlatformAdhesion', self.platform_adhesion_combo.GetSelection())
+	
+		profile.putPreference('simpleModeProfile'			, profile_name)
+		profile.putPreference('simpleModePlatformAdhesion'	, self.platform_adhesion_combo.GetSelection())
+		profile.putPreference('simpleModeNozzle'			, nozzle_name)
+		profile.putPreference('simpleModeMaterial'			, material_name)
 
 		self._updateAvailableOptions()
 		self._callback()
@@ -295,6 +313,11 @@ class simpleModePanel(wx.Panel):
 			if not setting.isProfile():
 				continue
 			settings[setting.getName()] = setting.getDefault()
+		print(profile_name)
+		print(material_name)
+		print(nozzle_name)
+		
+		print("getSerialoverrrides")
 
 		settings.update(self._profile_manager.getSettingsFor(profile_name, material_name, nozzle_name))
 		if self.printSupport.GetValue():

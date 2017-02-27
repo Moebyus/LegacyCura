@@ -17,6 +17,9 @@ from Cura.util import machineCom
 from Cura.util import profile
 from Cura.util import resources
 
+from Cura.util import moebyusFactory
+from Cura.gui  import moebyusGui
+
 def getDefaultFirmware(machineIndex = None):
 	machine_type = profile.getMachineSetting('machine_type', machineIndex)
 	extruders = profile.getMachineSettingFloat('extruder_amount', machineIndex)
@@ -24,6 +27,10 @@ def getDefaultFirmware(machineIndex = None):
 	baudrate = 250000
 	if sys.platform.startswith('linux'):
 		baudrate = 115200
+		
+	if moebyusFactory.hasFirmwareForMachine(machine_type) :
+		return 'moebyusFirmware'
+			
 	if machine_type == 'ultimaker':
 		name = 'MarlinUltimaker'
 		if extruders > 2:
@@ -84,6 +91,22 @@ class InstallFirmware(wx.Dialog):
 		if self._machine_type == 'reprap':
 			wx.MessageBox(_("Cura only supports firmware updates for ATMega2560 based hardware.\nSo updating your RepRap with Cura might or might not work."), _("Firmware update"), wx.OK | wx.ICON_INFORMATION)
 
+
+		if filename == 'moebyusFirmware'  :
+			firmSelectW = moebyusGui.moebyusFirmwareSelector()
+			print('Opening firmware selector')
+			result = firmSelectW.ShowModal() == wx.ID_OK
+			print("Selected:")
+			print(firmSelectW.getFilename())
+			filename = resources.getPathForFirmware(firmSelectW.getFilename())
+			firmSelectW.Destroy()
+			print("Filename:")
+			print(filename)
+			if not result or filename == '' or filename == None :
+				self.Destroy()
+				print('Not Found!')
+				return
+			
 		sizer = wx.BoxSizer(wx.VERTICAL)
 
 		self.progressLabel = wx.StaticText(self, -1, 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\nX\nX')

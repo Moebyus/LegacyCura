@@ -25,6 +25,9 @@ from Cura.util import version
 import platform
 from Cura.util import meshLoader
 
+from Cura.util import moebyusFactory
+from Cura.gui  import moebyusGui
+
 try:
 	#MacOS release currently lacks some wx components, like the Publisher.
 	from wx.lib.pubsub import Publisher
@@ -101,11 +104,12 @@ class mainWindow(wx.Frame):
 		self.normalModeOnlyItems.append(i)
 		self.Bind(wx.EVT_MENU, self.OnLoadProfileFromGcode, i)
 
-		# self.fileMenu.AppendSeparator()
+		self.fileMenu.AppendSeparator()
 		## Disabled the reset profile option, as it resets to global defaults, not machine defaults.
-		# i = self.fileMenu.Append(-1, _("Reset Profile to default"))
-		# self.normalModeOnlyItems.append(i)
-		# self.Bind(wx.EVT_MENU, self.OnResetProfile, i)
+		#Enabled to reset from moebyus Factory
+		i = self.fileMenu.Append(-1, _("Reset Profile to default"))
+		self.normalModeOnlyItems.append(i)
+		self.Bind(wx.EVT_MENU, self.OnResetProfile, i)
 
 		self.fileMenu.AppendSeparator()
 		i = self.fileMenu.Append(-1, _("Preferences...\tCTRL+,"))
@@ -414,6 +418,12 @@ class mainWindow(wx.Frame):
 		prefDialog.Show()
 		prefDialog.Raise()
 
+	def OnMachineFeatures(self, e):
+		prefDialog = moebyusGui.moebyusGCodeFeaturesDialog(self)
+		prefDialog.Centre()
+		prefDialog.Show()
+		prefDialog.Raise()
+
 	def OnDropFiles(self, files):
 		self.scene.loadFiles(files)
 
@@ -489,6 +499,9 @@ class mainWindow(wx.Frame):
 		i = self.machineMenu.Append(-1, _("Machine settings..."))
 		self.Bind(wx.EVT_MENU, self.OnMachineSettings, i)
 
+		self.machineMenu.AppendSeparator()
+		i = self.machineMenu.Append(-1, _("Configure Machine Features"))
+		self.Bind(wx.EVT_MENU, self.OnMachineFeatures, i)
 		#Add tools for machines.
 		self.machineMenu.AppendSeparator()
 
@@ -554,7 +567,10 @@ class mainWindow(wx.Frame):
 		result = dlg.ShowModal() == wx.ID_YES
 		dlg.Destroy()
 		if result:
-			profile.resetProfile()
+			if moebyusFactory.isMoebyusMachine() :
+				moebyusFactory.resetProfile()
+			else :
+				profile.resetProfile()
 			self.updateProfileToAllControls()
 
 	def OnSimpleSwitch(self, e):
@@ -567,7 +583,7 @@ class mainWindow(wx.Frame):
 		result = dlg.ShowModal() == wx.ID_YES
 		dlg.Destroy()
 		if result:
-			profile.resetProfile()
+			#profile.resetProfile()
 			for k, v in self.simpleSettingsPanel.getSettingOverrides().items():
 				if profile.getMachineSetting('machine_type').startswith('ultimaker2+'):
 					if k == 'nozzle_size':
