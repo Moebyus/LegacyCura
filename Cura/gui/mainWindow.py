@@ -26,6 +26,7 @@ import platform
 from Cura.util import meshLoader
 
 from Cura.util import moebyusFactory
+from Cura.gui  import moebyusGui
 
 try:
 	#MacOS release currently lacks some wx components, like the Publisher.
@@ -417,6 +418,12 @@ class mainWindow(wx.Frame):
 		prefDialog.Show()
 		prefDialog.Raise()
 
+	def OnMachineFeatures(self, e):
+		prefDialog = moebyusGui.moebyusGCodeFeaturesDialog(self)
+		prefDialog.Centre()
+		prefDialog.Show()
+		prefDialog.Raise()
+
 	def OnDropFiles(self, files):
 		self.scene.loadFiles(files)
 
@@ -492,6 +499,9 @@ class mainWindow(wx.Frame):
 		i = self.machineMenu.Append(-1, _("Machine settings..."))
 		self.Bind(wx.EVT_MENU, self.OnMachineSettings, i)
 
+		self.machineMenu.AppendSeparator()
+		i = self.machineMenu.Append(-1, _("Configure Machine Features"))
+		self.Bind(wx.EVT_MENU, self.OnMachineFeatures, i)
 		#Add tools for machines.
 		self.machineMenu.AppendSeparator()
 

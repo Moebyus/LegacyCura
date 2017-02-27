@@ -365,3 +365,7 @@ class MoebyusDonePage(MoebyusInfoPage):
 		self.AddHiddenSeperator()
 		self.AddHiddenSeperator()
 		self.AddText(_("May the Force be with you..."))				
+
+class moebyusGCodeFeaturesDialog(wx.Dialog) :
+	def __init__(self, parent = None)  :
+		super(moebyusGCodeFeaturesDialog, self).__init__(parent=parent, title="Special Features", size=(800, 600))
