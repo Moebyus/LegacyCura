@@ -69,10 +69,10 @@ G28
 G29                     ;Run the auto bed leveling
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E25             ;extrude
+G1 F300 E10             ;extrude
+G0 Z0.5 Y30 E25 F1000
 G92 E0                  ;zero the extruded length again
 G1 E-4 F1200
-G0 Z0.5 Y20 F1000
 G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
@@ -198,7 +198,6 @@ G90                     ;absolute positioning
 M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
 G28   
-G29                     ;Run the auto bed leveling
 G1 Z5.0 F{travel_speed} ;move the platform down 5mm
 G92 E0                  ;zero the extruded length
 G1 F200 E15             ;extrude 3mm of feed stock
@@ -221,13 +220,14 @@ def setAlterationsSirius() :
 G21                     ;metric values
 G90                     ;absolute positioning
 M82                     ;set extruder to absolute mode
+G28
 M107                    ;start with the fan off
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E25             ;extrude
+G1 F300 E10             ;extrude
+G0 Z0.5 Y30 E25 F1000
 G92 E0                  ;zero the extruded length again
-G1 F1200 E-4            ;retract
-G0 Z0.5 Y25 F2000
+G1 E-4 F1200
 G0 Y50
 G1 F{travel_speed}
 
@@ -268,19 +268,19 @@ G29                         ;Run the auto bed leveling
 T1
 G1 X300 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F200 E20             ;extrude 3mm of feed stock
+G1 F300 E10             ;extrude
+G0 Z0.5 Y30 E25 F1000
 G92 E0                  ;zero the extruded length again
-G0 Z0.5 Y10
-G1 F1500 E-{retraction_dual_amount}
-G0 Y40
+G1 F1500 E-{retraction_dual_amount} F1200
+G0 Y50
 
 T0                          ;Switch to the first extruder
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E25             ;extrude
+G1 F300 E10             ;extrude
+G0 Z0.5 Y30 E25 F1000
 G92 E0                  ;zero the extruded length again
-G1 F1200 E-4            ;retract
-G0 Z0.5 Y25 F2000
+G1 E-4 F1200
 G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
@@ -325,10 +325,10 @@ G28
 G29                     ;Run the auto bed leveling
 G1 X300 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E20             ;extrude 3mm of feed stock
+G1 F300 E10             ;extrude
+G0 Z0.5 Y30 E25 F1000
 G92 E0                  ;zero the extruded length again
-G1  E-4 F1200
-G0 Z0.5 Y10 F2000
+G1 E-4 F1200
 G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
@@ -356,7 +356,6 @@ def setAlterationsSiriusDuplicator() :
 M605 S2
 M117 Duplicator Enabled!
 G28
-G29                     ;Run the auto bed leveling
 M109 S{print_temperature}
 
 ;Sliced at: {day} {date} {time}
@@ -372,10 +371,10 @@ M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E25             ;extrude
+G1 F300 E10             ;extrude
+G0 Z0.5 Y30 E25 F1000
 G92 E0                  ;zero the extruded length again
-G1 F1200 E-4            ;retract
-G0 Z0.5 Y25 F2000
+G1 E-4 F1200
 G0 Y50
 G1 F{travel_speed}
 ;Put printing message on LCD screen
