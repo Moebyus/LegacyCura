@@ -500,8 +500,8 @@ class mainWindow(wx.Frame):
 		self.Bind(wx.EVT_MENU, self.OnMachineSettings, i)
 
 		self.machineMenu.AppendSeparator()
-		i = self.machineMenu.Append(-1, _("Configure Machine Features"))
-		self.Bind(wx.EVT_MENU, self.OnMachineFeatures, i)
+		#i = self.machineMenu.Append(-1, _("Configure Machine Features"))
+		#self.Bind(wx.EVT_MENU, self.OnMachineFeatures, i)
 		#Add tools for machines.
 		self.machineMenu.AppendSeparator()
 

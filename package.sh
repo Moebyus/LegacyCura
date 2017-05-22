@@ -24,7 +24,7 @@ BUILD_FIRMWARES=${2:-true}
 ##Do we need to create the final archive
 ARCHIVE_FOR_DISTRIBUTION=1
 ##Which version name are we appending to the final archive
-export BUILD_NAME=15.05.01.Moebyus
+export BUILD_NAME=15.05.02.Moebyus
 TARGET_DIR=Cura-${BUILD_NAME}-${BUILD_TARGET}
 
 ##Which versions of external programs to use

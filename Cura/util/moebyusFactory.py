@@ -554,6 +554,27 @@ def hasFirmwareForMachine(machineType = profile.getMachineSetting('machine_type'
 	else :
 		return False		
 
+def getFWNameByFeatures(machineType, extruderType, xyType, zType, lcdType) :
+	printer_info = [
+	# max Size x, y, z,machine type
+	("PrusaI3MM"  			, "PrusaI3MM-Ramps" ),
+	("PrusaI3MM-L"			, "PrusaI3MM.L-Ramps" ),
+	("SteelMM"				, "SteelMM-Ramps" ),
+	("SteelMM-L"  			, "SteelMM.L-Ramps" ),
+	("SteelMM-Sirius"		, "SteelMM.SiriusFrame-Ramps"),
+	("Melta"				, "Melta-Ramps" ),
+	("Sirius1"				, "Sirius1-Rumba" ),
+	("Sirius1-right"		, "Sirius1-Rumba" ),
+	("Sirius1-duplication"	, "Sirius1-Rumba" ),
+	("Sirius11"				, "Sirius11-Rumba" ),
+	("Sirius11-right"		, "Sirius11-Rumba" ),
+	("Sirius11-duplication"	, "Sirius11-Rumba" )]
+	for machine in printer_info :
+		if machine[0] == machineType :
+			machineType = machine[1]
+
+	return machineType + "-" + extruderType + "-" + xyType + "-" + zType + "-" + lcdType  + ".hex"
+
 def getMachineThumb(machineType = profile.getMachineSetting('machine_type')) :
 		printer_info = [
 		# max Size x, y, z,machine type
