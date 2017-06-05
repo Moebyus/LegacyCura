@@ -102,7 +102,11 @@ class InstallFirmware(wx.Dialog):
 			firmSelectW.Destroy()
 			print("Filename:")
 			print(filename)
-			if not result or filename == '' or filename == None :
+			if not result  :
+				self.Destroy()
+				return
+			if filename == '' or filename == None :
+				wx.MessageBox(_("No se ha encontrado Firmware para esa configuracion"), _("Firmware update"), wx.OK | wx.ICON_ERROR)
 				self.Destroy()
 				print('Not Found!')
 				return
