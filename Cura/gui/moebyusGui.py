@@ -133,7 +133,7 @@ class MoebyusInfoPage(wx.wizard.WizardPageSimple):
 
 class moebyusFirmwareSelector(wx.Dialog) :
 	def __init__(self, parent = None)  :
-		super(moebyusFirmwareSelector, self).__init__(parent=parent, title="Moebyus Machines Firmware loader", size=(800, 700))
+		super(moebyusFirmwareSelector, self).__init__(parent=parent, title="Cargador de Firmware Moebyus Machines", size=(800, 700))
 
 		sizer = wx.GridBagSizer(5, 5)
 		self.sizer = sizer
@@ -155,6 +155,7 @@ class moebyusFirmwareSelector(wx.Dialog) :
 					("Steel MM\t\t\t(200x200x200)"			,"SteelMM"),
 					("Steel MM - L\t\t(300x200x200)"		,"SteelMM-L"),
 					("Steel MM Marco Sirius\t(300x200x260)"	,"SteelMM-Sirius"),
+					("Steel MM S303030\t\t(300x300x300)"	,"SteelMM-S303030"),
 					("Melta Kossel\t\t(160x300)"			,"Melta"),
 					("[SIRIUS] 1.0\t\t(300x200x200)"		,"Sirius1"),
 					("[SIRIUS] 1.1\t\t(300x200x250)"		,"Sirius11")]
@@ -178,7 +179,7 @@ class moebyusFirmwareSelector(wx.Dialog) :
 		self.ZType		  = self.ZTypes		[0][1]
 		
 		
-		title = wx.StaticText(self, -1, 'Select Machine Type')
+		title = wx.StaticText(self, -1, 'Selecciona modelo de maquina:')
 		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
 		self.GetSizer().Add(title, pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
 		self.rowNr += 1
@@ -211,7 +212,7 @@ class moebyusFirmwareSelector(wx.Dialog) :
 				item.Bind(wx.EVT_RADIOBUTTON, self.onMachineSelect)
 
 
-		title = wx.StaticText(self, -1, 'Select lcd type')
+		title = wx.StaticText(self, -1, 'Tipo de LCD:')
 		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
 		self.GetSizer().Add(title, pos=(self.rowNr, 0), span=(1, 2),flag=wx.EXPAND | wx.ALL)
 		self.rowNr += 1
@@ -236,12 +237,11 @@ class moebyusFirmwareSelector(wx.Dialog) :
 				self.lcdSelection.append(item)
 				item.Bind(wx.EVT_RADIOBUTTON, self.onLcdSelect)
 
-
 		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
 		self.rowNr += 1
 
 
-		title = wx.StaticText(self, -1, 'Select extruder type')
+		title = wx.StaticText(self, -1, 'Tipo de Extrusor:')
 		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
 		self.GetSizer().Add(title, pos=(self.rowNr, 0), span=(1, 2),flag=wx.EXPAND | wx.ALL)
 		self.rowNr += 1
@@ -267,13 +267,12 @@ class moebyusFirmwareSelector(wx.Dialog) :
 				item.Bind(wx.EVT_RADIOBUTTON, self.onExtruderSelect)
 
 
-
 		self.secondRow = 16
 		
 		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.secondRow, 3), span=(1, 2), flag=wx.EXPAND | wx.ALL)
 		self.secondRow += 1
 
-		title = wx.StaticText(self, -1, 'Select XY type')
+		title = wx.StaticText(self, -1, 'Sistema XY:')
 		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
 		self.GetSizer().Add(title, pos=(self.secondRow, 3), span=(1, 2),flag=wx.EXPAND | wx.ALL)
 		self.secondRow += 1
@@ -298,11 +297,10 @@ class moebyusFirmwareSelector(wx.Dialog) :
 				self.XYSelection.append(item)
 				item.Bind(wx.EVT_RADIOBUTTON, self.onXYSelect)
 
-
 		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.secondRow, 3), span=(1, 2), flag=wx.EXPAND | wx.ALL)
 		self.secondRow += 1
 		
-		title = wx.StaticText(self, -1, 'Select Z type')
+		title = wx.StaticText(self, -1, 'Sistema Z:')
 		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
 		self.GetSizer().Add(title, pos=(self.secondRow, 3), span=(1, 2),flag=wx.EXPAND | wx.ALL)
 		self.secondRow += 1
@@ -330,11 +328,10 @@ class moebyusFirmwareSelector(wx.Dialog) :
 		self.GetSizer().Add(wx.StaticLine(self, -1), pos=(self.secondRow, 3), span=(1, 2), flag=wx.EXPAND | wx.ALL)
 		self.secondRow += 1
 
-
 		button_sizer = wx.BoxSizer(wx.HORIZONTAL)
-		okButton = wx.Button(self, wx.ID_OK	 , "Install Firmware")
+		okButton = wx.Button(self, wx.ID_OK	 , "Cargar Firmware")
 		button_sizer.Add(okButton,0,wx.ALL,10)
-		cancelButton = wx.Button(self, wx.ID_CANCEL, "Cancel")
+		cancelButton = wx.Button(self, wx.ID_CANCEL, "Cancelar")
 		button_sizer.Add(cancelButton,0,wx.ALL,10)
 		self.GetSizer().Add(button_sizer , pos=(self.rowNr, 0), span=(1, 2), flag=wx.EXPAND | wx.ALL)
 
@@ -354,6 +351,35 @@ class moebyusFirmwareSelector(wx.Dialog) :
 				values = selected.data
 				self.previewBitmap.SetBitmap(wx.Bitmap(resources.getPathForImage(moebyusFactory.getMachineThumb(values[0]))))
 				self.machineType = values[0]
+				
+#				self.extruderSelection.Enable()
+#				self.lcdSelection[0].Enable()
+#				self.XYSelection[0].Enable()
+#				self.ZSelection[0].Enable()
+#				
+#				if values[0] == 'PrusaI3MM' :
+#					self.lcdSelection.SetSelection(0)
+#					self.extruderSelection.SetSelection(1)
+#					self.XYSelection.SetSelection(0)
+#					self.ZSelection.SetSelection(0)
+#				elif values[0] == 'Melta' :
+#					self.lcdSelection.SetSelection(1)
+#					self.extruderSelection.SetSelection(0)
+#					self.XYSelection.SetSelection(0)
+#					self.ZSelection.SetSelection(0)
+#					self.XYSelection.Disable()
+#					self.ZSelection.Disable()
+#
+#				elif values[0] == 'Sirius1' or  values[0] == 'Sirius11' or values[0] == 'SteelMM-Sirius' or values[0] == 'SteelMM-S303030' or values[0] == 'SteelMM-S303030':
+#					self.lcdSelection.SetSelection(0)
+#					self.extruderSelection.SetSelection(0)
+#					self.XYSelection.SetSelection(0)
+#					self.ZSelection.SetSelection(1)
+#				else :
+#					self.lcdSelection.SetSelection(0)
+#					self.extruderSelection.SetSelection(1)
+#					self.XYSelection.SetSelection(0)
+#					self.ZSelection.SetSelection(0)
 
 	def onExtruderSelect(self, e):
 		for selected in self.extruderSelection :
@@ -388,6 +414,7 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 			("Steel MM\t\t\t\t\t(200x200x200)"			, "SteelMM"	      ),
 			("Steel MM Large\t\t\t(300x200x200)"		, "SteelMM-L"  	  ),
 			("Steel MM Marco Sirius\t(300x200x250)"		, "SteelMM-Sirius"),
+			("Steel MM S303030\t\t(300x300x300)"		, "SteelMM-S303030"),
 			("Melta Kossel\t\t\t\t(160x300)"			, "Melta"	 	  ),
 			("Melta XL\t\t\t\t\t(400x600)"				, "MeltaXL"		  ),
 			("[SIRIUS] 1.0\t\t\t\t(300x200x200)"		, "Sirius1"		  ),
@@ -467,7 +494,7 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 					self.comboFilaments.Disable()
 					self.comboNozzles.SetSelection(6)
 					self.comboFilaments.SetSelection(0)
-				elif values[0] == 'Sirius1' or  values[0] == 'Sirius11' or values[0] == 'SteelMM-Sirius' or values[0] == 'Melta' :
+				elif values[0] == 'Sirius1' or  values[0] == 'Sirius11' or values[0] == 'SteelMM-Sirius' or values[0] == 'Melta' or values[0] == 'SteelMM-S303030':
 					self.comboNozzles.Enable()
 					self.comboFilaments.Enable()
 					self.comboNozzles.SetSelection(3)
@@ -481,19 +508,19 @@ class MoebyusSelectModelPage(MoebyusInfoPage):
 
 class MoebyusDonePage(MoebyusInfoPage):
 	def __init__(self, parent):
-		super(MoebyusDonePage, self).__init__(parent, _("Cura is now ready!"))
+		super(MoebyusDonePage, self).__init__(parent, _("Cura ya esta listo!"))
 		self.AddSeperator()
-		self.AddText(_("Thanks for installing our software, now you're ready to print"))
+		self.AddText(_("Gracias por elegir nuestro software, estamos listos para imprimir!"))
 		self.AddHiddenSeperator()
 		self.AddHiddenSeperator()
-		self.AddText(_("You can find the latest version of this software at: "))
+		self.AddText(_("Puede encontrar la ultima version de este software en: "))
 		self.AddText(_("https://github.com/moebyus/cura/releases"))
 		self.AddHiddenSeperator()		
-		self.AddText(_("Also you can find and Download all the files regarding your machine at: "))
+		self.AddText(_("Tambien puede descargar los ficheros relativos a su maquina en: "))
 		self.AddText(_("https://github.com/moebyus"))
 		self.AddHiddenSeperator()
 		self.AddHiddenSeperator()
-		self.AddText(_("May the Force be with you..."))				
+		self.AddText(_("May the force be with you...."))				
 
 class moebyusGCodeFeaturesDialog(wx.Dialog) :
 	def __init__(self, parent = None)  :

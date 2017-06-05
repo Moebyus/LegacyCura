@@ -69,7 +69,7 @@ G28
 G29                     ;Run the auto bed leveling
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E25             ;extrude
+G1 F250 E25             ;extrude
 G92 E0                  ;zero the extruded length again
 G1 E-4 F1200
 G0 Z0.5 Y20 F1000
@@ -222,9 +222,10 @@ G21                     ;metric values
 G90                     ;absolute positioning
 M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
+G28
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E25             ;extrude
+G1 F250 E25             ;extrude
 G92 E0                  ;zero the extruded length again
 G1 F1200 E-4            ;retract
 G0 Z0.5 Y25 F2000
@@ -325,7 +326,7 @@ G28
 G29                     ;Run the auto bed leveling
 G1 X300 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E20             ;extrude 3mm of feed stock
+G1 F250 E20             ;extrude 3mm of feed stock
 G92 E0                  ;zero the extruded length again
 G1  E-4 F1200
 G0 Z0.5 Y10 F2000
@@ -372,7 +373,7 @@ M82                     ;set extruder to absolute mode
 M107                    ;start with the fan off
 G1 X0 Y0 Z5.0 F{travel_speed} 
 G92 E0                  ;zero the extruded length
-G1 F300 E25             ;extrude
+G1 F250 E25             ;extrude
 G92 E0                  ;zero the extruded length again
 G1 F1200 E-4            ;retract
 G0 Z0.5 Y25 F2000
@@ -406,6 +407,7 @@ def setMachineProperties(machineType , filamentSize = 1.75 , nozzleSize = 0.4) :
 		("Steel MM"					, 200, 200, 200, "SteelMM"),
 		("Steel MM Large"			, 310, 200, 260, "SteelMM-L"),
 		("Steel MM Marco Sirius"	, 310, 200, 260, "SteelMM-Sirius"),
+		("Steel MM S303030"			, 310, 310, 310, "SteelMM-S303030"),
 		("Melta Kossel"				, 160, 160, 300, "Melta"),
 		("Melta XL"					, 400, 400, 600, "MeltaXL"),
 		("[SIRIUS] Normal Dual"		, 300, 200, 200, "Sirius1"),
@@ -527,6 +529,7 @@ def isMoebyusMachine(machineType = profile.getMachineSetting('machine_type'))	:
 						"SteelMM",
 						"SteelMM-L",
 						"SteelMM-Sirius",
+						"SteelMM-S303030",
 						"Melta",
 						"MeltaXL",
 						"Sirius1",
@@ -562,13 +565,14 @@ def getFWNameByFeatures(machineType, extruderType, xyType, zType, lcdType) :
 	("SteelMM"				, "SteelMM-Ramps" ),
 	("SteelMM-L"  			, "SteelMM.L-Ramps" ),
 	("SteelMM-Sirius"		, "SteelMM.SiriusFrame-Ramps"),
+	("SteelMM-S303030"		, "SteelMM.S303030-Ramps"),
 	("Melta"				, "Melta-Ramps" ),
-	("Sirius1"				, "Sirius1-Rumba" ),
-	("Sirius1-right"		, "Sirius1-Rumba" ),
-	("Sirius1-duplication"	, "Sirius1-Rumba" ),
-	("Sirius11"				, "Sirius11-Rumba" ),
-	("Sirius11-right"		, "Sirius11-Rumba" ),
-	("Sirius11-duplication"	, "Sirius11-Rumba" )]
+	("Sirius1"				, "SIRIUS1-Rumba" ),
+	("Sirius1-right"		, "SIRIUS1-Rumba" ),
+	("Sirius1-duplication"	, "SIRIUS1-Rumba" ),
+	("Sirius11"				, "SIRIUS11-Rumba" ),
+	("Sirius11-right"		, "SIRIUS11-Rumba" ),
+	("Sirius11-duplication"	, "SIRIUS11-Rumba" )]
 	for machine in printer_info :
 		if machine[0] == machineType :
 			machineType = machine[1]
@@ -577,13 +581,13 @@ def getFWNameByFeatures(machineType, extruderType, xyType, zType, lcdType) :
 
 def getMachineThumb(machineType = profile.getMachineSetting('machine_type')) :
 		printer_info = [
-		# max Size x, y, z,machine type
 		("MoebyusOne" 			, "mone.png" ),
 		("PrusaI3MM"  			, "prusai3mm.png" ),
 		("PrusaI3MM-L"			, "prusai3mml.png" ),
 		("SteelMM"				, "steelmm.png" ),
 		("SteelMM-L"  			, "steelmml.png" ),
 		("SteelMM-Sirius"		, "steelsirius.png" ),
+		("SteelMM-S303030"		, "steelsirius.png" ),
 		("Melta"				, "melta.png" ),
 		("MeltaXL"				, "meltaxl.png" ),
 		("Sirius1"				, "sirius1.png" ),
